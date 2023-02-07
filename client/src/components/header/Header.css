@@ -2,7 +2,7 @@
 .header {
 	padding-block: 1em;
 }
-.logo {
+.branding {
 	display: none;
 
 }
@@ -32,6 +32,7 @@
 	height: 36px;
 	width: 36px;
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .magnifying-glass {
@@ -54,7 +55,7 @@
 	padding-inline: 1em;
 	padding-block: .25em;
 	border-radius: 10px;
-	border: 1.5px solid grey;
+	border: 1.5px solid #E6E6E6;
 }
 
 .filter-text {
@@ -66,6 +67,7 @@
 	position: relative;
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 
 .badge {
@@ -91,4 +93,42 @@
 
 .apt-icon {
 	width: 24px;
+}
+
+
+/****************** desktop view ************/
+
+
+@media (min-width: 900px){
+
+	.header {
+		border-bottom: 1px solid #E6E6E6;
+		padding-block: 2em;
+	}
+
+	.branding {
+		display: block;
+
+	}
+
+	.header-wrapper {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		align-items: center;
+
+	}
+
+	.logo {
+		
+		height: 50px;
+		cursor: pointer;
+	}
+
+	.filter-selected-box {
+		margin-top: 0;
+	}
+
+	.filter {
+		padding-block: .5em;
+	}
 }

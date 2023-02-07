@@ -110,3 +110,17 @@ input:focus{
 	width: 90%;
 	margin-inline: auto;
 }
+
+
+/***** DESKTOP VIEW ******************************************/
+
+
+@media (min-width: 900px) {
+
+	.container {
+
+		width: 94%;
+	}
+
+}
+
