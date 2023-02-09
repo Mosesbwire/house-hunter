@@ -8,7 +8,6 @@ import img_two from '../../images/img-02.webp'
 import img_three from '../../images/img-03.webp'
 import img_four from '../../images/img-04.webp'
 import img_five from '../../images/img-05.webp'
-import './Gallery.css'
 
 const images = [
 	img_one,

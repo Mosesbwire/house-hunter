@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import ImageSlider from './ImageSlider'
+import './Gallery.css'
+
+
 const Gallery = props => {
   return (
     <div className='container gallery'>
