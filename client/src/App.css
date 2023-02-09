@@ -3,6 +3,7 @@
 :root {
 	--dark: #000000;
 	--md-gray: #B5B5B5;
+	--md-gray-300: #808080;
 	--light-gray: #E8E8E8;
 }
 
@@ -111,6 +112,19 @@ input:focus{
 	margin-inline: auto;
 }
 
+.text-300 {
+	font-weight: 300;
+}
+
+
+.text-light {
+	color: var(--md-gray-300);
+
+}
+
+.text-bold-500 {
+	font-weight: 400;
+}
 
 /***** DESKTOP VIEW ******************************************/
 

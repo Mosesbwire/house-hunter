@@ -1,28 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ImageSlider from './ImageSlider'
+import Card from './Card.js'
 import './Gallery.css'
 
 
 const Gallery = props => {
   return (
     <div className='container gallery'>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
-      <ImageSlider/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
+	  <Card/>
     </div>
   )
 }
