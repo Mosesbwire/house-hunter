@@ -1,0 +1,39 @@
+.agent-contacts {
+	display: flex;
+	justify-content: flex-end;
+}
+
+
+.contact-wrapper {
+	border: 1px solid grey;
+	border-radius: 10px;
+	width: 75%;
+	padding-inline: 1em;
+	padding-block: 1.5em;
+
+}
+
+.contact-cta {
+		
+	background-color: #000;
+	color: #FFF;
+	padding-block: 1em;
+	text-align: center;
+}
+
+.contact-info {
+	margin-top: 1em;
+}
+
+.contact-info > * {
+	align-items: center;
+
+}
+
+.contact-info > * > p {
+	margin-left: 1em;
+}
+
+.contact-info > * + * {
+	margin-top: .75em;
+}

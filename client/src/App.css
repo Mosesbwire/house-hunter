@@ -112,6 +112,10 @@ input:focus{
 	margin-inline: auto;
 }
 
+.row {
+	display: flex;
+}
+
 .text-300 {
 	font-weight: 300;
 }
