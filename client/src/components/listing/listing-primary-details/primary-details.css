@@ -1,0 +1,36 @@
+
+.row {
+	display: flex;
+}
+.house-location {
+	justify-content: space-between;
+
+}
+.house-details {
+	margin-top: 1.5em;
+}
+.house-detail {
+	align-items: center;
+	margin-bottom: 1em;
+
+}
+
+.ic-details {
+	width: 1.5em;
+	margin-right: .75em;
+}
+
+@media (min-width: 900px) {
+
+	.house-details {
+		display: flex;
+	}
+	.ic-details {
+		margin-right: .35em;
+	}
+	.house-details > * + * {
+		margin-left: 1em;
+		border-left: 1px solid grey;
+		padding-left: .75em;
+	}
+}

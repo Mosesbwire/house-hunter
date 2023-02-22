@@ -1,0 +1,23 @@
+.information-categories {
+	display: flex;
+	margin-top: 1em;
+}
+
+.info-category {
+	border-radius: 5px;
+	background-color: transparent;
+	padding-inline: .75em;
+	padding-block: .35em;
+	transition: all 250ms ease-in;
+}
+
+.info-category:hover {
+	color: #FFF;
+	background-color: #000;
+	cursor: pointer;
+}
+
+.information-categories > * + * {
+	margin-left: 1.5em;
+
+}
