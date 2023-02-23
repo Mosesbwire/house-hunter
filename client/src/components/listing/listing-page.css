@@ -1,4 +1,10 @@
-.listing-contact-row {
-	display: grid;
-	grid-template-columns: 2fr 1fr;
+
+@media (min-width: 900px){
+	.listing-contact-row {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+	}
+	
+
 }
+

@@ -1,6 +1,6 @@
 .agent-contacts {
 	display: flex;
-	justify-content: flex-end;
+	
 }
 
 
@@ -36,4 +36,12 @@
 
 .contact-info > * + * {
 	margin-top: .75em;
+}
+
+
+@media (min-width: 900px) {
+	.agent-contacts {
+		justify-content: flex-end;
+	}
+
 }
