@@ -2,14 +2,33 @@
 .card {
 	padding-bottom: 1em;
 	cursor: pointer;
-
+	position: relative;
 }
+
+.card-slider {
+	border-radius: 10px;
+	overflow: hidden;
+}
+
 
 .card-info {
 	margin-top: 1em;
 	line-height: 1.3;
 }
+.crd-save-icon {
+	position: absolute;
+	top: 5%;
+	right: 5%;
+	z-index: 99;
+	width: 20px;
+	height: 20px;
+	transition: color 250ms ease-in-out;
+}
 
+.crd-save-icon:hover {
+	color: red;
+
+}
 .price {
 	margin-top: .5em;
 }

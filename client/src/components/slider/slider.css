@@ -13,7 +13,9 @@
 
 .pure-car {
 	min-width: 100%;
-	
+	min-height: 350px;
+	max-height: 350px;
+
 }
 
 .pure-car > img {
@@ -94,5 +96,10 @@
 	.owl-car {
 		min-width: 25%;
 		margin-right: .5em;
+	}
+
+	.pure-car {
+		min-height: 250px;
+		max-height: 250px;
 	}
 }
