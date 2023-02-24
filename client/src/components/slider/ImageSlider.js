@@ -69,9 +69,6 @@ const ImageSlider = props => {
 	<div className='angle angle-right' onClick={goToNext}>
 	  <FontAwesomeIcon icon={faAngleRight}/>
 	</div> : null}
-	<div className='heart-ic'>
-	  <FontAwesomeIcon icon={faHeart} className='heart-icon'/>
-	</div>
 	<div className='slider'>
 	  <div className='slider-container' ref={slider}>
 		{props.imgContainer.length > 0 ?<Fragment>
