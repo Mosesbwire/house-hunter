@@ -5,9 +5,28 @@ import PrimaryDetails from './listing-primary-details/PrimaryDetails.js'
 import LocalInformation from './local-information/LocalInformation.js'
 import LocalMap from './local-map/LocalMap.js'
 import ContactCard from './contact-card/ContactCard.js'
+import Slider from '../slider/ImageSlider.js'
+import img_one from '../../images/img-01.webp'
+import img_two from '../../images/img-02.webp'
+import img_three from '../../images/img-03.webp'
+import img_four from '../../images/img-04.webp'
+import img_five from '../../images/img-05.webp'
 import './listing-page.css'
 
 const ProductPage = props => {
+	const imgContainer = [
+		img_one,
+		img_two,
+		img_three,
+		img_four,
+		img_five,
+		img_one,
+		img_two,
+		img_three,
+		img_four,
+		img_five
+		
+	];
 
  return (
 	<div>
@@ -18,6 +37,7 @@ const ProductPage = props => {
 	  </div>
 	  <LocalInformation/>
 	  <LocalMap/>
+	  <Slider imgContainer={imgContainer} type={"owl"}/>
 	</div>
 
  )
