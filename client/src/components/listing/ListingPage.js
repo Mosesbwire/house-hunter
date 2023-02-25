@@ -13,7 +13,7 @@ import img_four from '../../images/img-04.webp'
 import img_five from '../../images/img-05.webp'
 import './listing-page.css'
 
-const ProductPage = props => {
+const ListingPage = props => {
 	const imgContainer = [
 		img_one,
 		img_two,
@@ -43,8 +43,8 @@ const ProductPage = props => {
  )
 }
 
-ProductPage.propTypes = {
+ListingPage.propTypes = {
 
 }
 
-export default ProductPage
+export default ListingPage
