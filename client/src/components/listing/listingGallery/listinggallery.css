@@ -1,6 +1,11 @@
+.listing-name {
+	
+	margin-bottom: 2em;
+}
 .listing-gallery-grid {
 	display: none;
 }
+
 
 .listing-gallery-primary-img {
 	position: relative;

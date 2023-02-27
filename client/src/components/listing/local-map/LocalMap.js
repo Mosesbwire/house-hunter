@@ -8,7 +8,7 @@ import './local-map.css'
 const LocalMap = props => {
 
   return (
-	  <div className='local-map container'>
+	  <div className='local-map'>
 		<MapContainer center={[-1.36, 36.83]} zoom={13} scrollWhellZoom={false} className='lmap-container'>
 	  	   <TileLayer
 	  		attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

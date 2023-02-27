@@ -1,8 +1,28 @@
+.listing-page {
+	padding-top : 1em;
+}
+
+.listing-contact-row {
+	padding-block: 1.5em;
+
+}
+
+.listing-contact-row > :first-child {
+	margin-bottom: 1em;
+}
 
 @media (min-width: 900px){
+	.listing-page {
+		padding-top: 2.5em;
+	}
+	
 	.listing-contact-row {
 		display: grid;
 		grid-template-columns: 2fr 1fr;
+		padding-block-start: 2.5em;
+	}
+	.listing-contact-row > :first-child {
+		margin-bottom: 0;
 	}
 
 }

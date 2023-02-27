@@ -6,8 +6,7 @@
 
 .contact-wrapper {
 	border: 1px solid grey;
-	border-radius: 10px;
-	width: 75%;
+	width: 100%;
 	padding-inline: 1em;
 	padding-block: 1.5em;
 
@@ -42,6 +41,11 @@
 @media (min-width: 900px) {
 	.agent-contacts {
 		justify-content: flex-end;
+	}
+
+	.contact-wrapper {
+		width: 75%;
+		padding-inline: 2em;
 	}
 
 }

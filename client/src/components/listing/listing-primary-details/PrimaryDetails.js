@@ -8,7 +8,7 @@ import './primary-details.css'
 const PrimaryDetails = props => {
 
  return (
-	<div>
+	<div className='listing-primary-details'>
 	 <div>
 	  <div>
 	   <div className='row house-location'>

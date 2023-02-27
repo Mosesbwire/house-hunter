@@ -1,6 +1,11 @@
+.local-information {
+	padding-block-end: 2em;
+}
+
 .information-categories {
 	display: flex;
 	margin-top: 1em;
+	padding-block: 1em;
 }
 
 .info-category {
@@ -21,3 +26,4 @@
 	margin-left: 1.5em;
 
 }
+

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ListingGallery from './listingGallery/ListingGallery.js'
 import PrimaryDetails from './listing-primary-details/PrimaryDetails.js'
 import LocalInformation from './local-information/LocalInformation.js'
-import LocalMap from './local-map/LocalMap.js'
+import SimilarListings from './similar-listings/SimilarListings.js'
 import ContactCard from './contact-card/ContactCard.js'
 import Slider from '../slider/ImageSlider.js'
 import img_one from '../../images/img-01.webp'
@@ -29,15 +29,14 @@ const ListingPage = props => {
 	];
 
  return (
-	<div>
+	<div className='listing-page'>
 	  <ListingGallery/>
 	  <div className='listing-contact-row container'>
 	     <PrimaryDetails/>
 	     <ContactCard/>
 	  </div>
 	  <LocalInformation/>
-	  <LocalMap/>
-	  <Slider imgContainer={imgContainer} type={"owl"}/>
+	  <SimilarListings/>
 	</div>
 
  )
