@@ -48,4 +48,10 @@
 		column-gap: 1.5em;
 		padding-top: 2em;
 	}
+
+	.map-badge {
+		position: fixed;
+		bottom: 0;
+		left: 45%;
+	}
 }
