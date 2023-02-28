@@ -1,0 +1,24 @@
+.map {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    /* top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+}
+
+.list-pill {
+    z-index: 99;
+    position: absolute;
+    left: 35%;
+    bottom: 5%;
+    
+}
+
+@media (min-width: 900px) {
+    .list-pill {
+        left: 48%;
+        bottom: 20%;
+    }
+}
