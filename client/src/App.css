@@ -5,6 +5,8 @@
 	--md-gray: #B5B5B5;
 	--md-gray-300: #808080;
 	--light-gray: #E8E8E8;
+  --hightlight: #0F730C;
+  --hightlight-100: #169e11;
 }
 
 /* Box sizing rules */
@@ -114,6 +116,10 @@ input:focus{
 
 .row {
 	display: flex;
+}
+
+.heading-100 {
+  font-size: 1.35em;
 }
 
 .text-300 {
