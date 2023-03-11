@@ -5,6 +5,8 @@ import Gallery from './components/gallery/Gallery';
 import ListingPage from './components/listing/ListingPage';
 import Map from './components/map/Map'
 import Pricing from './components/pricing/Pricing'
+import Signin from './components/auth/Signin';
+import Signup from './components/auth/Signup'
 function App() {
   return (
     <Router>
@@ -15,6 +17,9 @@ function App() {
           <Route path='/listing' element={<ListingPage/>}/>
           <Route path='/map' element={<Map/>}/>
           <Route path='/pricing' element={<Pricing/>}/>
+          <Route path='/sign-in' element={<Signin/>}/>
+          <Route path='/sign-up' element={<Signup/>}/>
+          
         </Routes>
       </div>
     </Router>

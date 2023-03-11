@@ -21,7 +21,7 @@
 }
 
 .feature-icon {
-    color: var(--hightlight-100);
+    color: var(--highlight-100);
 }
 .prices-section > * + * {
     margin-block: 2em;
@@ -47,7 +47,7 @@
 }
 
 .pricing-btn {
-    background-color: var(--hightlight-100);
+    background-color: var(--highlight-100);
     color: #FFF;
     border: none;
     padding-inline: 2em;
@@ -89,7 +89,7 @@
     }
 
     .prc-card:hover {
-        border-color: var(--hightlight);
+        border-color: var(--highlight);
     }
 
     .pricing-btn {
@@ -97,7 +97,7 @@
     }
 
     .pricing-btn:hover {
-        background-color: var(--hightlight);
+        background-color: var(--highlight);
         cursor: pointer;
     }
 }
