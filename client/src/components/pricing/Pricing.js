@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import PricingCard from './PricingCard'
+import Payment from '../payment/Payment'
 import Logo from '../../images/logo4.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome' 
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
@@ -9,7 +10,7 @@ import './pricing.css'
 
 const Pricing = props => {
   return (
-    <div className='container '>
+    <div className='container'>
       <div className='pricing-wrapper'>
         <img src={Logo} className='pricing-logo'/>
         <h1 className='prc-heading heading-100'>Get unlimited access to all features on House Hunter</h1>
@@ -34,6 +35,7 @@ const Pricing = props => {
         <PricingCard subType={"Weekly"} amount={"Ksh.1500/week"}/>
         <PricingCard subType={"Monthly"} amount={"Ksh.4500/month"}/>
       </div>
+      <Payment/>
     </div>
   )
 }

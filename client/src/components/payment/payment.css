@@ -1,0 +1,120 @@
+.pay-title {
+    text-align: center;
+    margin-bottom: 2em;
+    font-weight: 400;
+    font-size: 1.45em;
+    text-transform: uppercase;
+}
+.payment-container {
+    border: 1px solid var(--md-gray-300);
+    padding-block: 2em;
+    padding-inline: 1em;
+    font-weight: 300;
+}
+.payment-steps {
+    padding-inline: 1em;
+    margin-bottom: 2em;
+}
+
+.payment-steps * + * {
+    margin-top: 1em;
+}
+.user-phone_no {
+    margin-right: 1em;
+}
+
+.input-phone {
+    padding-block: .5em;
+    padding-inline-start: .75em;
+    padding-inline-end: 2em;
+}
+
+.btn-payment {
+    padding-block: .75em;
+    padding-inline: 1.5em;
+    border: none;
+    background-color: var(--dark);
+    color: var(--light-gray);
+    margin-top: 2em;    
+}
+.divider {
+    column-gap: 1em;
+    align-items: center;
+    margin-top: 2em; 
+}
+.divider > hr {
+    display: block;
+    width: 100%;
+    height: 0;
+}
+.paybill-opt {
+    overflow: hidden;
+}
+
+.paybill-opt > img {
+    position: relative;
+    top: -30px;
+}
+
+.paybill-instructions {
+    position: relative;
+    top: -40px;
+}
+
+.paybill-instructions * + * {
+    margin-top: 1em;
+}
+
+.paybill-instructions > p > span {
+    font-weight: 500;
+}
+
+@media (min-width: 900px) {
+    .pay-title {
+        margin-top: 3em;
+        margin-bottom: 1em;
+    }
+    .payment-container {
+        display: flex;
+        column-gap: 2em;
+        border: none;
+        padding-inline: 6.5em;
+        
+    }
+
+    .payment-container > * {
+        border: 1px solid var(--md-gray-300);
+        border-radius: 5px ;
+        padding-block: 2em;
+        padding-inline: 1em;
+
+    }
+
+    .divider > hr {
+        display: none;
+    }
+
+    .divider {
+        border: none;
+    }
+
+    .paybill-opt > img {
+        top: -25%;
+    }
+    .paybill-instructions {
+        top: -40%;
+    }
+
+    .btn-payment {
+        cursor: pointer;
+        transition: all 300ms;
+        padding-inline: 4em;
+        padding-block: 1em;
+    }
+
+    .btn-payment:hover {
+        background-color: transparent;
+        border: 1px solid var(--dark);
+        color: var(--dark);
+    }
+}
