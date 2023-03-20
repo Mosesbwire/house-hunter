@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSliders} from '@fortawesome/free-solid-svg-icons'
+import ListingFilter from '../filter/ListingFilter'
 
 const Filter = props => {
+  
   return (
     <div className='badge-container filter'>
         <div className='badge'>
