@@ -1,0 +1,153 @@
+.no-sm {
+    display: none;
+}
+.listing-filter {
+    display: grid;
+    align-items: center;
+    position: absolute;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .3);
+    backdrop-filter: blur(1px);
+    z-index: 100;
+}
+
+.filter-wrapper {
+    background-color: #FFF;
+    width: 90%;
+    margin-inline: auto;
+    border-radius: 9px;
+    z-index: 101;
+}
+
+.close-filter {
+    width: 30px;
+    height: 30px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: black;
+    color: #FFF;
+}
+
+.upper-section {
+    padding-inline: 1em;
+    padding-block: .75em;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+.main-filter-section {
+    padding-inline: 1em;
+    padding-block: 1em;
+}
+.price-section {
+    padding-block: .5em;
+}
+.price-range {
+    column-gap: 1.5em;
+    margin-top: 1em;
+}
+.range-input-grp {
+    border: 1px solid var(--highlight-100);
+    border-radius: 10px;
+    overflow: hidden;
+    padding-inline: 1em;
+    padding-block: .5em;
+    
+}
+
+.range-input-grp > input {
+    display: block;
+    outline: none;
+    border: none;
+    margin-top: .5em;
+    
+}
+
+.num-rooms {
+    margin-block: 1em;
+}
+
+.rooms-wrapper {
+    display: flex;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    flex-wrap: wrap;
+    column-gap: .75em;
+    row-gap: .75em;
+}
+
+.rooms {
+    border: 1.5px solid #000;
+    border-radius: 10px;
+    padding-inline: 1.5em;
+    padding-block: .5em;
+}
+
+.room-addon {
+    display: flex;
+    align-items: center;
+}
+
+.room-addon > label{
+    margin-left: .4em;
+
+}
+
+.listing-type {
+    margin-top: 2em;
+    
+}
+
+.listing-type-wrapper {
+    padding-block: 1em;
+    padding-inline: 1.5em;
+    column-gap: 1em;
+    
+}
+
+.listing-type-wrapper > * {
+    flex-basis: 100%;
+    text-align: center;
+    border: 2px solid transparent;
+    outline:1px solid black;
+    border-radius: 10px;
+    padding-block: 1em;
+    padding-inline:1em;
+
+}
+
+.listing-type-wrapper > *:hover {
+    border-color: var(--highlight-100);
+    outline: none;
+}
+
+.icon-building {
+    font-size: 3em;
+    margin-bottom: .2em;
+}
+
+.filter-footer {
+    border-top: 1px solid var(--light-gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 1em;
+    padding-block: 1.5em;
+}
+
+.filter-footer > :first-child {
+    text-decoration: underline;
+}
+
+.filtered-listing {
+    background-color: #000;
+    color: #FFF;
+    border-radius: 10px;
+    padding-inline: 1em;
+    padding-block: .5em;
+}

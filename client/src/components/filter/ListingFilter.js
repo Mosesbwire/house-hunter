@@ -2,34 +2,39 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark, faCity, faHouse} from '@fortawesome/free-solid-svg-icons'
+import './listing-filter.css'
 
 const ListingFilter = props => {
+    const handleClick = (e) => {
+        e.stopPropagation()
+    }
   return (
-    <div>
-      <div>
+    <div className='listing-filter' onClick={e => handleClick(e)}>
+     <div className='filter-overlay'></div>
+      <div className='filter-wrapper'>
         <div className='upper-section'>
-            <div className='close-filter'>
+            <div className='close-filter' onClick={props.onClose}>
                 <FontAwesomeIcon icon={faXmark}/>
             </div>
-            <h1>Filter</h1>
+            <h1 className='filter-title no-sm'>Filter</h1>
         </div>
         <div className='main-filter-section'>
             <div className='price-section'>
                 <p>Price Range</p>
-                <div className='price-range'>
-                    <div>
+                <div className='price-range row'>
+                    <div className='range-input-grp'>
                         <small>min</small>
-                        <input/>
+                        <input type={'text'} placeholder='7500'/>
                     </div>
-                    <div>
+                    <div  className='range-input-grp'>
                         <small>max</small>
-                        <input/>
+                        <input type={'text'} placeholder='35000'/>
                     </div>
                 </div>
             </div>
             <div className='num-rooms'>
                 <p>Bedrooms</p>
-                <div>
+                <div className='rooms-wrapper'>
                     <div className='rooms'>
                         <p>Bedsitter</p>
                     </div>
@@ -49,20 +54,20 @@ const ListingFilter = props => {
                         <p>5+</p>
                     </div>
                 </div>
-                <div>
+                <div className='room-addon'>
                     <input type={'checkbox'}/>
                     <label>Ensuite</label>
                 </div>
             </div>
-            <div>
+            <div className='listing-type'>
                 <p>Listing Type</p>
-                <div>
+                <div className='listing-type-wrapper row'>
                     <div>
-                        <FontAwesomeIcon icon={faCity}/>
+                        <FontAwesomeIcon icon={faCity} className='icon-building'/>
                         <p>Apartments</p>
                     </div>
                     <div>
-                        <FontAwesomeIcon icon={faHouse}/>
+                        <FontAwesomeIcon icon={faHouse} className='icon-building'/>
                         <p>Houses</p>
                     </div>
                 </div>
