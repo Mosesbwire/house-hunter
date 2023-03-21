@@ -82,7 +82,8 @@
 }
 
 .rooms {
-    border: 1.5px solid #000;
+    border: 1px solid var(--md-gray-300);
+    color: var(--md-gray-300);
     border-radius: 10px;
     padding-inline: 1.5em;
     padding-block: .5em;
@@ -150,4 +151,39 @@
     border-radius: 10px;
     padding-inline: 1em;
     padding-block: .5em;
+}
+
+@media (min-width: 900px){
+    .filter-wrapper {
+        width: 50%;
+        
+    }
+    .close-filter:hover {
+        cursor: pointer;
+        background-color: #FFF;
+        color: #000;
+        border: 1px solid #000;
+    }
+
+    .range-input-grp {
+        flex-basis: 100%;
+    }
+    .main-filter-section {
+        overflow-y: scroll;
+        height: 70vh;
+    }
+
+    .rooms:hover {
+        cursor: pointer;
+        border-color: #000;
+        color: #000;
+    }
+
+    .filtered-listing {
+        cursor: pointer;
+    }
+
+    .filter-footer>:first-child {
+        cursor: pointer;
+    }
 }
