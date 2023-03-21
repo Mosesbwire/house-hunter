@@ -45,6 +45,7 @@
 /* ------------------------ Signin Page form --------------------------- */
 
 .signin-form {
+    padding-top: 2em;
     font-weight: 300;
 }
 .signin-form > h1 {
