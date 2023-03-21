@@ -1,0 +1,27 @@
+.saved-pg > h1 {
+    margin-bottom: 1.5em;
+}
+.container-grid {
+    border-top: 1px solid var(--light-gray);
+    padding-block: 2em;
+}
+
+.container-grid > * + * {
+    margin-top: 1em;
+}
+
+
+
+@media (min-width: 900px) {
+    .container-grid {
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 2em;
+    }
+    .container-grid > * + * {
+        margin-top: 0;
+    }
+    .container-grid > * {
+        flex-basis: 30%;
+    }
+}
