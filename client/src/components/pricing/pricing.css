@@ -36,7 +36,9 @@
     border-radius: 5px;
 
 }
-
+.selected-prc-card {
+    border-color: var(--highlight);
+}
 .prc-card-wrapper {
     padding-block: 2em;
     width: 90%;
@@ -57,6 +59,12 @@
     padding-block: 1em;
     border-radius: 30px;
     width: 100%;
+}
+
+.selected-btn {
+    background-color: #FFF;
+    color: var(--highlight);
+    border: 1px solid var(--highlight);
 }
 
 @media (min-width: 900px) {

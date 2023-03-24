@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useRef, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import PricingCard from './PricingCard'
 import Payment from '../payment/Payment'
@@ -9,6 +9,19 @@ import './pricing.css'
 
 
 const Pricing = props => {
+  const paymentOptionRef = useRef(null)
+  const [showPaymentOptions, setShowPaymentOptions] = useState(false)
+
+  const showPayment = (val)=> {
+    setShowPaymentOptions(val)
+  }
+  
+
+  useEffect(()=>{
+    if (showPaymentOptions){
+      paymentOptionRef.current.scrollIntoView({behavior: 'smooth'})
+    }
+  }, [showPaymentOptions])
   return (
     <div className='container'>
       <div className='pricing-wrapper'>
@@ -31,11 +44,14 @@ const Pricing = props => {
         </div>
       </div>
       <div className='prices-section'>
-        <PricingCard subType={"One Day"} amount={"Ksh.350"}/>
-        <PricingCard subType={"Weekly"} amount={"Ksh.1500/week"}/>
-        <PricingCard subType={"Monthly"} amount={"Ksh.4500/month"}/>
+        <PricingCard subType={"One Day"} amount={"Ksh.350"} showPayment={showPayment}/>
+        <PricingCard subType={"Weekly"} amount={"Ksh.1500/week"} showPayment={showPayment} />
+        <PricingCard subType={"Monthly"} amount={"Ksh.4500/month"} showPayment={showPayment} />
       </div>
-      <Payment/>
+      <div ref={paymentOptionRef}>
+        {showPaymentOptions ? <Payment/> : null}
+      </div>
+      
     </div>
   )
 }

@@ -4,7 +4,7 @@ import MpesaLogo from '../../images/lipa_na_mpesa.png'
 import './payment.css'
 const Payment = props => {
   return (
-    <div class="payment-options">
+    <div className="payment-options">
         <h1 className='pay-title'>Payment options</h1>
         <div className='payment-container'>
             <div>
@@ -30,7 +30,7 @@ const Payment = props => {
             </div>
             <div className='paybill-opt'>
                 <img src={MpesaLogo}/>
-                <div class="paybill-instructions">
+                <div className="paybill-instructions">
                     <p>Paybill: 555111</p>
                     <p>Account No: <span>account email address</span></p>
                     <p>Amount</p>
