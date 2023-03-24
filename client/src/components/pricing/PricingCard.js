@@ -7,13 +7,14 @@ const PricingCard = props => {
   const handleClick = ()=> {
     setIsSelected(!isSelected)
     props.showPayment(true)
+    props.handleSubscription(props.id)
   }
   return (
-    <div className={isSelected ? 'prc-card selected-prc-card' : 'prc-card'} onClick={handleClick} >
+    <div className={isSelected && props.id === props.selectedSubId ? 'prc-card selected-prc-card' : 'prc-card'} onClick={handleClick} >
       <div className='prc-card-wrapper'>
         <p>{props.subType}</p>
         <p>{props.amount}</p>
-        <button className={isSelected ? 'pricing-btn selected-btn' : 'pricing-btn'}>{!isSelected ? 'Select' : 'Selected'}</button>
+        <button className={isSelected && props.id === props.selectedSubId ? 'pricing-btn selected-btn' : 'pricing-btn'}>{isSelected && props.id === props.selectedSubId ? 'Selected' : 'Select'}</button>
       </div>
     </div>
   )

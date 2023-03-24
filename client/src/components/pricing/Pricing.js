@@ -11,9 +11,14 @@ import './pricing.css'
 const Pricing = props => {
   const paymentOptionRef = useRef(null)
   const [showPaymentOptions, setShowPaymentOptions] = useState(false)
+  const [selectedSubId, setSelectedSubId] = useState(null)
 
   const showPayment = (val)=> {
     setShowPaymentOptions(val)
+  }
+
+  const handleSubscription = (id) => {
+    setSelectedSubId(id)
   }
   
 
@@ -44,9 +49,9 @@ const Pricing = props => {
         </div>
       </div>
       <div className='prices-section'>
-        <PricingCard subType={"One Day"} amount={"Ksh.350"} showPayment={showPayment}/>
-        <PricingCard subType={"Weekly"} amount={"Ksh.1500/week"} showPayment={showPayment} />
-        <PricingCard subType={"Monthly"} amount={"Ksh.4500/month"} showPayment={showPayment} />
+        <PricingCard id={1} subType={"One Day"} amount={"Ksh.350"} showPayment={showPayment} handleSubscription={handleSubscription} selectedSubId={selectedSubId}/>
+        <PricingCard id={2} subType={"Weekly"} amount={"Ksh.1500/week"} showPayment={showPayment} handleSubscription={handleSubscription} selectedSubId={selectedSubId}/>
+        <PricingCard id={3} subType={"Monthly"} amount={"Ksh.4500/month"} showPayment={showPayment} handleSubscription={handleSubscription} selectedSubId={selectedSubId}/>
       </div>
       <div ref={paymentOptionRef}>
         {showPaymentOptions ? <Payment/> : null}

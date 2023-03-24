@@ -54,7 +54,7 @@
 .pricing-btn {
     background-color: var(--highlight-100);
     color: #FFF;
-    border: none;
+    border: 1px solid transparent;
     padding-inline: 2em;
     padding-block: 1em;
     border-radius: 30px;
@@ -64,7 +64,7 @@
 .selected-btn {
     background-color: #FFF;
     color: var(--highlight);
-    border: 1px solid var(--highlight);
+    border-color: var(--highlight);
 }
 
 @media (min-width: 900px) {
