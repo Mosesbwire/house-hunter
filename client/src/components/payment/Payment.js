@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import {createPortal} from 'react-dom'
+import PaymentSuccessModal from '../payment/PaymentSuccessModal'
 import MpesaLogo from '../../images/lipa_na_mpesa.png'
 import './payment.css'
 const Payment = props => {
+    const [isPaymentSuccessful, setPaymentSuccessful] = useState(false)
+
+    const completePayment = ()=>{
+        setPaymentSuccessful(true)
+    }
   return (
     <div className="payment-options">
         <h1 className='pay-title'>Payment options</h1>
@@ -20,7 +27,7 @@ const Payment = props => {
                         <label className='user-phone_no'>Phone number:</label>
                         <input className='input-phone' type={'tel'} placeholder='070123xxx'/>
                     </div>
-                    <button className='btn-payment'>Complete payment</button>
+                    <button className='btn-payment' onClick={completePayment}>Complete payment</button>
                 </div>
             </div>
             <div className='row divider'>
@@ -36,8 +43,10 @@ const Payment = props => {
                     <p>Amount</p>
                 </div>
             </div>
-        
         </div>
+        {isPaymentSuccessful && createPortal(
+            <PaymentSuccessModal/>,
+            document.getElementById('portal-root'))}
     </div>
   )
 }

@@ -1,0 +1,84 @@
+.payment-success {
+    display: grid;
+    align-items: center;
+    position: absolute;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .3);
+    backdrop-filter: blur(1px);
+    z-index: 100;
+}
+
+.modal-wrapper {
+    display: grid;
+    text-align: center;
+    background-color: #FFF;
+    width: 90%;
+    margin-inline: auto;
+    padding-inline: 2em;
+    padding-block: 2.5em;
+}
+
+.modal-wrapper > h1, p {
+    margin-bottom: .75em;
+}
+
+.outer-check-wrapper {
+    justify-self: center;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(22, 158, 17,.7);
+    
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 1em;
+}
+.check-wrapper {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--highlight-100);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    
+}
+
+.pay-success-icon {
+    color: #FFF;
+    font-size: 2em;
+}
+
+.explore-listings-btn {
+    justify-self: center;
+    background-color: transparent;
+    width: 80%;
+    padding-block: 1em;
+    border-color: var(--highlight-100);
+    color: #000;
+    font-size: 1em;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+@media (min-width: 900px) {
+    .modal-wrapper {
+        width: 50%;
+        border-radius: 10px;
+    }
+
+    .explore-listings-btn {
+        width: 60%;
+        transition: all 200ms ease-in-out;
+    }
+    .explore-listings-btn:hover {
+        background-color: var(--highlight-100);
+        color: #FFF;
+        border-color: transparent ;
+    } 
+}
