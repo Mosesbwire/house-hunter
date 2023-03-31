@@ -1,7 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
 import Layout from './components/layout/Layout';
-import Header from './components/header/Header';
 import Gallery from './components/gallery/Gallery';
 import ListingPage from './components/listing/ListingPage';
 import Map from './components/map/Map'
