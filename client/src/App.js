@@ -1,6 +1,7 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
 import Header from './components/header/Header';
+import Layout from './components/layout/Layout'
 import Gallery from './components/gallery/Gallery';
 import ListingPage from './components/listing/ListingPage';
 import Map from './components/map/Map'
@@ -11,19 +12,18 @@ import SavedListings from './components/saved-listing/SavedListings';
 function App() {
   return (
     <Router>
-      <div>
-        <Header/>
         <Routes>
-          <Route path='/' element={<Gallery/>}/>
-          <Route path='/listing' element={<ListingPage/>}/>
-          <Route path='/map' element={<Map/>}/>
+          <Route element={<Layout/>}>
+            <Route path='/' element={<Gallery/>}/>
+            <Route path='/listing' element={<ListingPage/>}/>
+            <Route path='/map' element={<Map/>}/>
+          </Route>
           <Route path='/pricing' element={<Pricing/>}/>
           <Route path='/sign-in' element={<Signin/>}/>
           <Route path='/sign-up' element={<Signup/>}/>
           <Route path='/saved-listing' element={<SavedListings/>}/>
           
         </Routes>
-      </div>
     </Router>
   );
 }
