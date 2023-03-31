@@ -17,7 +17,7 @@ const Filter = props => {
             <p>4</p>
         </div>
       <FontAwesomeIcon icon={faSliders} alt='sliders' className='sliders'/>
-      <p className='filter-text'>Filters</p>
+      <div className='filter-text'>Filters</div>
       {showFilter && createPortal(
         <ListingFilter onClose={()=> setShowFilter(false)}/>,
         document.getElementById('portal-root')
