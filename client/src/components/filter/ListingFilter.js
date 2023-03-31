@@ -36,22 +36,22 @@ const ListingFilter = props => {
                 <p>Bedrooms</p>
                 <div className='rooms-wrapper'>
                     <div className='rooms'>
-                        <p>Bedsitter</p>
+                        <div>Bedsitter</div>
                     </div>
                     <div className='rooms'>
-                        <p>1</p>
+                        <div>1</div>
                     </div>
                     <div className='rooms'>
-                        <p>2</p>
+                        <div>2</div>
                     </div>
                     <div className='rooms'>
-                        <p>3</p>
+                        <div>3</div>
                     </div>
                     <div className='rooms'>
-                        <p>4</p>
+                        <div>4</div>
                     </div>
                     <div className='rooms'>
-                        <p>5+</p>
+                        <div>5+</div>
                     </div>
                 </div>
                 <div className='room-addon'>
@@ -76,7 +76,7 @@ const ListingFilter = props => {
         <div className='filter-footer'>
             <p>Clear all</p>
             <div className='filtered-listing'>
-                <p>Show 50+ listings</p>
+                <div>Show 50+ listings</div>
             </div>
         </div>
       </div>

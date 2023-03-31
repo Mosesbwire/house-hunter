@@ -6,7 +6,7 @@ import './badge.css'
 const Badge = props => {
   return (
     <div className='badge-pill'>
-       <p>{props.name}</p> 
+       <div>{props.name}</div>
        <FontAwesomeIcon icon={props.icon}/>
     </div>
   )

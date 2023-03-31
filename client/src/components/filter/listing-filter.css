@@ -86,7 +86,10 @@
     color: var(--md-gray-300);
     border-radius: 10px;
     padding-inline: 1.5em;
-    padding-block: .5em;
+    padding-block: .75em;
+    display: grid;
+    align-items: center;
+    justify-content: center;
 }
 
 .room-addon {
