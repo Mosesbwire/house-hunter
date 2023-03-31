@@ -53,8 +53,8 @@
 		right: 5%;
 		display: flex;
 		align-items: center;
-		padding-inline: .5em;
-		padding-block: .2em;
+		padding-inline: .75em;
+		padding-block: .5em;
 		border-radius: 5px;
 		background-color: var(--light-gray);
 		border: 1.5px solid #000;
@@ -63,10 +63,11 @@
 	}	
 
 	.listing-gallery-showmore:hover {
-		background-color: var(--md-gray);
+		background-color: rgba(0,0,0, 0.5);
+		color: #FFF;
 	}
 
-	.listing-gallery-showmore > p {
+	.listing-gallery-showmore > div {
 		margin-left: .5em;
 
 	}	

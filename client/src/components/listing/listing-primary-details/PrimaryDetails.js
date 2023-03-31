@@ -23,15 +23,15 @@ const PrimaryDetails = props => {
 	   <div className='house-details text-300'>
 	 	<div className='row house-detail'>
 	 	  <FontAwesomeIcon icon={faBed} className='ic-details'/>
-	 	  <p>3 Bedrooms</p>
+	 	  <div>3 Bedrooms</div>
 	 	</div>
 	 	<div className='row house-detail'>
 	 	  <FontAwesomeIcon icon={faShower} className='ic-details'/>
-	 	  <p>1 Bathroom</p>
+	 	  <div>1 Bathroom</div>
 	 	</div>
 		<div className='row house-detail'>
 	 	  <FontAwesomeIcon icon={faDoorClosed} className='ic-details'/>
-	 	  <p>Master ensuite bedroom</p>
+	 	  <div>Master ensuite bedroom</div>
 	 	</div>	
 	   </div>
 	  </div>

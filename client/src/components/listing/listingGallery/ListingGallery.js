@@ -34,7 +34,7 @@ const ListingGallery = props => {
 			  </div>
 			  <div className='listing-gallery-showmore'>
 				<FontAwesomeIcon icon={faGrip}/>
-				<p>Show all photos</p>
+				<div>Show all photos</div>
 			  </div>
 			</div>
 		</div>

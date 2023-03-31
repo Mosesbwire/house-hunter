@@ -15,11 +15,11 @@ const ContactCard = props => {
 	   <div className='contact-info'>
 	 	<div className='row'>
 	 	  <FontAwesomeIcon icon={faUser}/>
-	 	  <p>Agent 47</p>
+	 	  <div>Agent 47</div>
 	 	</div>
 	 	<div className='row'>
 	 	  <FontAwesomeIcon icon={faMobileScreenButton}/>
-	 	  <p>0721678900</p>
+	 	  <div>0721678900</div>
 	 	</div>
 	   </div>
 	 </div>
