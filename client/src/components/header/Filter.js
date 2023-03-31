@@ -14,7 +14,7 @@ const Filter = props => {
   return (
     <div className='badge-container filter' onClick={handleClick}>
         <div className='badge'>
-            <p>4</p>
+            4
         </div>
       <FontAwesomeIcon icon={faSliders} alt='sliders' className='sliders'/>
       <div className='filter-text'>Filters</div>

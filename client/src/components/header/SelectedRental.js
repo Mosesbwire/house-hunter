@@ -7,7 +7,7 @@ const SelectedRental = props => {
   return (
     <div className='badge-container'>
       <div className='badge'>
-        <p>2</p>
+        2
       </div>
       <div>
         <img src={apartment} alt='apartment building'className='apt-icon'/>
