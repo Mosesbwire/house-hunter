@@ -23,13 +23,13 @@ const Header = props => {
 	      </div>
 
          <div className='row right-header'>
-           <div>
+           <div className='search-container'>
               <Search/>
             </div>
             <div>
               <Filter/>
             </div>
-            <div onClick={()=> toggleMenu(true)}>
+            <div className='mobile-menu-icon' onClick={()=> toggleMenu(true)}>
               <FontAwesomeIcon icon={faBars}/>
             </div>
          </div>
