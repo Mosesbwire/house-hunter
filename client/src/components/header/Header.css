@@ -26,6 +26,7 @@
 }
 
 .search-bar {
+	position: relative;
 	/* display: flex;
 	justify-content: space-between;
 	background-color: #FFFFFF;
@@ -63,6 +64,34 @@
 	/* position: absolute;
 	top: 10px;
 	right: 10px; */
+}
+
+.search-locations {
+	position: absolute;
+	border: 1px solid #E6E6E6;
+	border-radius: 10px;
+	width: 300px;
+	left: -200px;
+	margin-top: .5em;
+	z-index: 100;
+	background-color: #fff;
+}
+
+.close-search-locations {
+	display: none;
+}
+
+.locations-wrapper {
+	padding: 1em 2em;
+}
+
+.location-items > * + * {
+	border-top: 1px solid #E6E6E6;
+	margin-top: .75em;
+}
+.location-items > * {
+	padding-top: .25em;
+	padding-bottom: .25em;
 }
 
 .filter-selected-box{
@@ -119,15 +148,6 @@
 
 .apt-icon {
 	width: 24px;
-}
-
-.mobile-menu {
-	/* position: absolute;
-	z-index: 100; */
-	/* top: 0;
-	right: 0;
-	z-index: 100;
-	border: 1px solid salmon; */
 }
 
 
