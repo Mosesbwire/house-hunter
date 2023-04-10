@@ -3,7 +3,6 @@
 }
 .listing-filter {
     display: grid;
-    align-items: center;
     position: absolute;
     position: fixed;
     top: 0;
@@ -12,15 +11,13 @@
     right: 0;
     background-color: rgba(0, 0, 0, .3);
     backdrop-filter: blur(1px);
-    z-index: 100;
+    z-index: 120;
 }
 
 .filter-wrapper {
     background-color: #FFF;
-    width: 90%;
-    margin-inline: auto;
-    border-radius: 9px;
-    z-index: 101;
+
+
 }
 
 .close-filter {
@@ -159,6 +156,8 @@
 @media (min-width: 900px){
     .filter-wrapper {
         width: 50%;
+        justify-self: center;
+        border-radius: 15px;
         
     }
     .close-filter:hover {

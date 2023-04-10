@@ -9,9 +9,9 @@ const Search = props => {
     setOpenSearch(!openSearch)
   }
   return (
-    <div className='search-bar'>
+    <div className='search-bar' onClick={toggleSearchLocation}>
       <input type='search' placeholder='Start your search' className='search-input'/>
-      <div className='search-icon' onClick={toggleSearchLocation}>
+      <div className='search-icon' >
         <FontAwesomeIcon icon={faMagnifyingGlass} className='magnifying-glass'/>
       </div>
       {openSearch ? <div className='search-locations'>

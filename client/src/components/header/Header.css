@@ -181,6 +181,8 @@
 		position: absolute;
 		bottom: 33%;
 		right: 20%;
+		cursor: pointer;
+		z-index: 110;
 	}
 
 	.filter-text {
