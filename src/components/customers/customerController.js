@@ -1,11 +1,5 @@
 const customerService = require('./customerService');
 const CustomerError = require('./customerError');
-
-// I made the methods in the controller static because the controller is responsible for handling incoming requests and returning responses. It does not have any state of its own and does not need to maintain any instance-specific information.
-
-// By making the methods static, we can call them directly on the class without having to instantiate an object. This makes the code simpler and more concise. Additionally, it makes it easier to test the controller methods because we don't have to worry about setting up and tearing down objects for each test.
-
-
   
   async function createCustomer(req, res, next) {
     try {

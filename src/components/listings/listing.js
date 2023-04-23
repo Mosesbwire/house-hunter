@@ -30,10 +30,7 @@ const ListingSchema = new Schema({
         default: true,
         required: true
     },
-    likes: {
-        type: Number,
-    },
-
+    
     rent_price: {
         type: Number,
         required: true
