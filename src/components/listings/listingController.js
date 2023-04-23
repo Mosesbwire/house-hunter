@@ -66,7 +66,7 @@ async function deleteListing(req, res, next) {
     }
 }
 
-module.expports = {
+module.exports = {
     createListing,
     getAllListings,
     getListingById,
