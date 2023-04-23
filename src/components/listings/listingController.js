@@ -4,7 +4,7 @@ const ListingError = require('./listingError')
 async function createListing(req, res, next) {
     try {
         const listing = await ListingService.createListing(req.body)
-        res.status(201).json(customer)
+        res.status(201).json(listing)
     } catch (err) {
         if (err instanceof ListingError) {
             res.status(400).json({error: err.message})
@@ -17,7 +17,7 @@ async function createListing(req, res, next) {
 async function getAllListings(req, res, next) {
     try {
         const listings = await ListingService.getListings()
-        res.status(200).json(listings)
+        res.status(200).json({listings: listings})
     } catch (err) {
         if (err instanceof ListingError) {
             res.status(err.statusCode).json({error: err.message})

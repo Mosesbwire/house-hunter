@@ -25,7 +25,27 @@ const ListingSchema = new Schema({
             type: [String]
         }
     },
+
+    details: {
+        bedrooms: {
+            type: Number,
+            required: true,
+        },
+        buildingType: {
+            type: String,
+            enum:['Apartment', 'Bungalow', 'Massionette', 'Villa'],
+            required: true
+        },
+        masterEnsuite: {
+            type: Boolean,
+            enum: [true, false]
+        },
+        bathrooms: {
+            type: Number
+        }
+    },
     onMarket: {
+        type: Boolean,
         enum: [true, false],
         default: true,
         required: true
@@ -60,6 +80,9 @@ const ListingSchema = new Schema({
         otherRooms: {
             type: [String]
         }
+    },
+    tags: {
+        type: [String]
     }
 
 })

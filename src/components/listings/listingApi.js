@@ -23,7 +23,7 @@ router.get('/:id', getListingById)
 
 // PUT /api/v1/listings/:id
 
-router.get('/:id', updateListing)
+router.put('/:id', updateListing)
 
 // DELETE /api/v1/listings/:id
 
