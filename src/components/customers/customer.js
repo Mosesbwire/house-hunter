@@ -26,14 +26,7 @@ const CustomerSchema = new Schema({
     subscription: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Subscription'
-    },
-    paymentHistory: [
-        {
-          date: Date,
-          amount: Number,
-          paymentMethod: String
-        }
-    ]
+    }
 })
 
 module.exports = mongoose.model('Customer', CustomerSchema);

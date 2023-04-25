@@ -3,9 +3,9 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const SubscriptionSchema = new Schema({
-    user: {
+    custoomer: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Customer',
         required: true
     },
     plan: {
