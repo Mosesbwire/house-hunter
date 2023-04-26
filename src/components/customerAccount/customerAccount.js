@@ -7,6 +7,10 @@ const CustomerAccountSchema = new Schema({
         ref: 'Customer'
     },
 
+    account_num: {
+        type: String,
+        required: true
+    },
     status: {
         type: String,
         enum: ['Active','Not Active' ],
