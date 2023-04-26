@@ -34,6 +34,15 @@ const CustomerError = require('./customerError');
     }
   }
 
+  async function getCustomerByEmail(email) {
+    try {
+      const customer = await Customer.findOne({email: email})
+      return customer
+    } catch (error) {
+      throw new CustomerError(error.message, 500)
+    }
+  }
+
   async function updateCustomer(customerId, updateData) {
     try {
       const updatedCustomer = await Customer.findByIdAndUpdate(customerId, updateData, { new: true });
@@ -57,6 +66,7 @@ module.exports = {
   createCustomer,
   getAllCustomers,
   getCustomerById,
+  getCustomerByEmail,
   updateCustomer,
   deleteCustomer
 }
