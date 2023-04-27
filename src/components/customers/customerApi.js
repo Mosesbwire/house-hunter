@@ -1,10 +1,10 @@
 const express = require('express');
 const {createCustomer, getAllCustomers, getCustomerById, updateCustomer, deleteCustomer } = require('./customerController');
-
+const { authenticateUser } = require("../../middleware")
 const router = express.Router();
 
 // GET /api/customers
-router.get('/', getAllCustomers);
+router.get('/', authenticateUser, getAllCustomers);
 
 // GET /api/customers/:id
 

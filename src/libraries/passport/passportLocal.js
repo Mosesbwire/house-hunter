@@ -1,6 +1,5 @@
-const passport = require("passport")
 
-const LocalStrategy = require("passport-local").Strategy
+const LocalStrategy = require("passport-local")
 const { getCustomerByEmail } = require("../../components/customers")
 const { comparePassword } = require("../bycrpt")
 
@@ -21,22 +20,34 @@ const verify = async (email, password, cb) => {
             return cb(null, false, {message: 'Incorrect email or password'})
         }
 
+        customer.password = null
         return cb(null, customer)
     } catch (error) {
 
         return cb(error)
     }
 }
-passport.use('local-customer', new LocalStrategy(options, verify))
 
-passport.serializeUser(function(customer, cb) {
-    process.nextTick(function(){
-        cb(null,{id: customer._id})
-    })
-})
 
-passport.deserializeUser(function(customer, cb) {
-    process.nextTick(function(){
-        return cb(null, customer)
+function initpassportLocalCustomer(passport) {
+    
+    passport.use('local', new LocalStrategy(options, verify))
+
+    passport.serializeUser(function(customer, cb) {
+        process.nextTick(function(){
+            cb(null, customer)
+        })
     })
-})
+
+    passport.deserializeUser(function(customer, cb) {
+        process.nextTick(function(){
+            return cb(null, customer)
+        })
+    })
+}
+
+module.exports = {
+
+    initpassportLocalCustomer
+}
+

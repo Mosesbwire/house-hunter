@@ -1,5 +1,6 @@
 const customerDAL = require('./customerDAL');
 const CustomerError = require('./customerError');
+const { hashPassword } = require("../../libraries/bycrpt")
 
 
 
@@ -29,6 +30,7 @@ const CustomerError = require('./customerError');
   async function createCustomer(customerData) {
     
     try {
+      customerData.password = await hashPassword(customerData.password)
       const customer = await customerDAL.createCustomer(customerData);
       return customer;
     } catch (error) {

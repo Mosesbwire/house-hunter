@@ -3,8 +3,10 @@ const customerApi = require('./customerApi');
 const { getCustomerByEmail } = require('./customerDAL')
 
 
+
 // Export all modules and files
 module.exports = {
   customerApi,
-  getCustomerByEmail
+  getCustomerByEmail,
+
 };
