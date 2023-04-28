@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser")
 const passport = require("passport")
 const session = require("express-session")
 const connectDB = require('../config/db.config')
+require('dotenv').config()
 const { customerApi } = require('./components/customers')
 const { listingApi } = require("./components/listings")
 const { planApi } = require("./components/plans")
@@ -12,7 +13,8 @@ const { authApi } = require("./components/auth")
 const { initpassportLocalCustomer } = require("./libraries")
 
 var app = express();
-connectDB()
+const dbString = process.env.MONGO_URL
+connectDB(dbString)
 
 initpassportLocalCustomer(passport)
 
