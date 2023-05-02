@@ -2,17 +2,19 @@ const multer = require("multer")
 
 const FILE_SIZE = 10 * 1024 * 1024
 
+
+const memoryStorage = multer.memoryStorage()
+
 const upload = multer({
-    storage: multer.memoryStorage(),
+    storage: memoryStorage,
     limits: {
         fileSize: FILE_SIZE
     },
-    fileFilter: (req, res, cb)=> {
-        if (file.mimetype.startsWith('image/')) {
-            cb(null, true)
-        } else {
-            cb(new Error("File type not supported"))
+    fileFilter: (req, files, cb) => {
+        if (!files.mimetype.startsWith('image/')) {
+            cb(new Error("File type not supported"), false)
         }
+        cb(null, true)
     }
 })
 

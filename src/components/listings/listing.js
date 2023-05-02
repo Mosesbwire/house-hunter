@@ -55,31 +55,8 @@ const ListingSchema = new Schema({
         type: Number,
         required: true
     },
-
-    images: {
-        mainImage: {
-            type: String
-        },
-        livingRoom: {
-            type: [String]
-        },
-        bedroom: {
-            masterBedroom: {
-                type: [String]
-            },
-            otherBedrooms: {
-                type: [String]
-            }
-        },
-        kitchen: {
-            type: [String]
-        },
-        bathroom: {
-            type: [String]
-        },
-        otherRooms: {
-            type: [String]
-        }
+    image_names: {
+        type: [String]
     },
     tags: {
         type: [String]

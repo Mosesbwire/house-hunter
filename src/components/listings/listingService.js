@@ -1,9 +1,17 @@
 const listingDAL = require('./listingDAL')
 const ListingError = require('./listingError')
+const { upload_cloud_storage, getReadImageUrl } = require("../../libraries")
 
-async function createListing(listingData) {
+async function createListing(listingData, images) {
+    const image_names = images.map(img => {
+        return img.originalname
+    })
     try {
+        listingData.image_names = image_names
         const listing = await listingDAL.createListing(listingData)
+        if (listing){
+            upload_cloud_storage(listing._id, images)
+        }
         return listing
     } catch (error) {
         throw new ListingError("Failed to create listing", error) 
@@ -11,8 +19,24 @@ async function createListing(listingData) {
 }
 
 async function getListings() {
+    
     try {
-        return await listingDAL.getAllListings();
+            const listings = await listingDAL.getAllListings()   
+            let newListings = []
+            let newListing = {}
+
+            for await (const listing of listings){
+                const signedUrls = await getReadImageUrl(listing.image_names)
+                const {
+                    id, name, geoLocation, location, details, onMarket, rent_price, tags
+                } = listing
+
+                newListing = {...{id, name, geoLocation, location, details, onMarket, rent_price, tags},
+                    imageUrls: signedUrls
+                }
+                newListings.push(newListing)
+            }
+            return newListings
     } catch (error) {
         throw new ListingError('Failed to get listings', error)
     }
@@ -26,6 +50,7 @@ async function getListingById(listingId) {
         if (!listing) {
             throw new ListingError('Listing does not exist')
         }
+        getReadImageUrl([listing.id])
         return listing
     } catch (error) {
         throw new ListingError(`Failed to get listing with id ${listingId}`, error)

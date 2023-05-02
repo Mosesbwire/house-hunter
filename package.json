@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "@google-cloud/storage": "^6.9.5",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.9",
     "cookie-parser": "~1.4.4",

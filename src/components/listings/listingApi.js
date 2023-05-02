@@ -7,11 +7,13 @@ const {
     deleteListing,
 } = require('./listingController')
 
+const { upload } = require("../../middleware")
+
 const router = express.Router()
 
 // POST /api/v1/listings
 
-router.post('/', createListing)
+router.post('/', upload.array("file") ,createListing)
 
 // GET /api/v1/listings
 

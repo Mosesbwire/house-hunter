@@ -8,14 +8,14 @@ async function createListing(listingData){
         const savedListing = await listing.save()
         return savedListing
     }catch(error) {
+        console.error(error)
         throw new ListingError(error.message, 400)
     }
 }
 
 async function getAllListings() {
     try {
-        const listings = Listing.find({})
-
+        const listings = await Listing.find({})
         return listings
     }catch (error) {
         throw new ListingError(error.message, 500)

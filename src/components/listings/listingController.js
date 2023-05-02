@@ -1,9 +1,29 @@
 const ListingService = require('./listingService')
 const ListingError = require('./listingError')
 
+
 async function createListing(req, res, next) {
     try {
-        const listing = await ListingService.createListing(req.body)
+        const data = {
+            name: "the oak",
+            location : {
+                mainLocation: "Kasarani",
+            },
+            geoLocation: {
+                longitude: "23",
+                latitude: "33"
+            },
+            details: {
+                bedrooms: 3,
+                buildingType: "Apartment",
+            },
+            onMarket: true,
+            rent_price: 17000,
+
+        }
+
+        const listing = await ListingService.createListing(data, req.files)
+        req.files = null
         res.status(201).json(listing)
     } catch (err) {
         if (err instanceof ListingError) {
