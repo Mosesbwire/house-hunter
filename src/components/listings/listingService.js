@@ -7,7 +7,7 @@ async function createListing(listingData, images) {
         return img.originalname
     })
     try {
-        listingData.image_names = image_names
+        listingData.imageNames = image_names
         const listing = await listingDAL.createListing(listingData)
         if (listing){
             upload_cloud_storage(listing._id, images)

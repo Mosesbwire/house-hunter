@@ -8,8 +8,8 @@ const ListingSchema = new Schema({
     },
     geoLocation: {
         type: {
-            latitude: String,
-            longitude: String
+            latitude: Number,
+            longitude: Number,
         },
         required: true
     },
@@ -33,7 +33,7 @@ const ListingSchema = new Schema({
         },
         buildingType: {
             type: String,
-            enum:['Apartment', 'Bungalow', 'Massionette', 'Villa'],
+            enum:['Apartment', 'Bungalow', 'Massionette', 'Villa', 'Plots'],
             required: true
         },
         masterEnsuite: {
@@ -51,11 +51,11 @@ const ListingSchema = new Schema({
         required: true
     },
     
-    rent_price: {
+    rentPrice: {
         type: Number,
         required: true
     },
-    image_names: {
+    imageNames: {
         type: [String]
     },
     tags: {

@@ -15,7 +15,6 @@ function loginCredentialsValidations(req, res, next) {
             .withMessage("Password cannot be empty")
             .isLength({min: 6})
             .withMessage("Password is too short. Must be atleast 6 characters")
-            .not()
             .isAlphanumeric()
             .withMessage("Password must contain letters and numbers")
         ]

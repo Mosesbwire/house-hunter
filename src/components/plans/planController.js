@@ -1,8 +1,13 @@
 const PlanService = require('./planService')
 const PlanError = require('./planError')
+const { validatePlanData } = require("./validation")
 
 async function createPlan(req, res, next) {
     try {
+        const errors = await validatePlanData
+        if (!errors.isEmpty()){
+            return res.status(422).json({error: errors.array()})
+        }
         const plan = await PlanService.createPlan(req.body)
         res.status(201).json(plan)
     } catch (err) {

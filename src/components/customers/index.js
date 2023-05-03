@@ -1,6 +1,7 @@
 // Import all necessary modules and files
 const customerApi = require('./customerApi');
 const { getCustomerByEmail } = require('./customerDAL')
+const { createCustomer }  = require("./customerController")
 
 
 
@@ -8,5 +9,6 @@ const { getCustomerByEmail } = require('./customerDAL')
 module.exports = {
   customerApi,
   getCustomerByEmail,
+  createCustomer
 
 };

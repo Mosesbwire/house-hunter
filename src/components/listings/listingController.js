@@ -1,5 +1,6 @@
 const ListingService = require('./listingService')
 const ListingError = require('./listingError')
+const { validateListingData } = require("./validation")
 
 
 async function createListing(req, res, next) {
@@ -18,10 +19,13 @@ async function createListing(req, res, next) {
                 buildingType: "Apartment",
             },
             onMarket: true,
-            rent_price: 17000,
+            rentPrice: 17000,
 
         }
-
+        const errors = await validateListingData(req)
+        if (!errors.isEmpty()){
+            res.status(422).json({error: errors.array()})
+        }
         const listing = await ListingService.createListing(data, req.files)
         req.files = null
         res.status(201).json(listing)
@@ -62,6 +66,11 @@ async function getListingById(req, res, next) {
 
 async function updateListing(req, res, next) {
     try {
+        const errors = await validateListingData(req)
+
+        if (!errors.isEmpty()){
+            return res.status(422).json({error: errors.array()})
+        }
         const listing = await ListingService.updateListing(req.params.id, req.body)
         res.status(200).json(listing)
     } catch (err) {

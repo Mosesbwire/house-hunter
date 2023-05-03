@@ -1,5 +1,5 @@
 const express = require('express');
-const {createCustomer, getAllCustomers, getCustomerById, updateCustomer, deleteCustomer } = require('./customerController');
+const {getAllCustomers, getCustomerById, updateCustomer, deleteCustomer } = require('./customerController');
 const { authenticateUser } = require("../../middleware")
 const router = express.Router();
 
@@ -9,10 +9,6 @@ router.get('/', authenticateUser, getAllCustomers);
 // GET /api/customers/:id
 
 router.get('/:id', getCustomerById);
-
-// POST /api/customers
-
-router.post('/', createCustomer);
 
 // PUT /api/customers/:id
 
