@@ -1,5 +1,36 @@
 const passport = require("passport")
+const { body, validationResult } = require("express-validator")
 
+function loginCredentialsValidations(req, res, next) {
+    const validations = [
+        body("email")
+            .trim()
+            .notEmpty()
+            .withMessage("Email cannot be empty")
+            .isEmail()
+            .withMessage("Invalid email address"),
+        body("password")
+            .trim()
+            .notEmpty()
+            .withMessage("Password cannot be empty")
+            .isLength({min: 6})
+            .withMessage("Password is too short. Must be atleast 6 characters")
+            .not()
+            .isAlphanumeric()
+            .withMessage("Password must contain letters and numbers")
+        ]
+    Promise.all(validations.map((validation)=> validation.run(req)))
+        .then(()=> {
+            const errors = validationResult(req)
+            if (errors.isEmpty()){
+                return next()
+            }
+            res.status(422).json({error: errors.array()})
+        })
+        .catch((error) =>{
+            res.status(500).json({error: error.message})
+        })
+}
 function loginCustomer(req, res, next) {
     
     passport.authenticate('local', async function(err, customer, info){
@@ -33,5 +64,6 @@ function authenticateUser(req, res, next) {
 
 module.exports = {
     loginCustomer,
-    authenticateUser
+    authenticateUser,
+    loginCredentialsValidations
 }
