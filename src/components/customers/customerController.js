@@ -11,9 +11,15 @@ const { validateCustomerData} = require("./validations")
 
       }
       const customer = await customerService.createCustomer(req.body);
-      
+      req.login(customer, (err)=>{
+        if(err) {
+          return next(err)
+        }
+        req.user.password = null
+        return res.status(201).json(req.user);
+      })
 
-      res.status(201).json(customer);
+      
     } catch (err) {
       if (err instanceof CustomerError) {
         res.status(400).json({ error: err.message });

@@ -26,6 +26,10 @@ const CustomerSchema = new Schema({
     subscription: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Subscription'
+    },
+    account: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CustomerAccount'
     }
 })
 

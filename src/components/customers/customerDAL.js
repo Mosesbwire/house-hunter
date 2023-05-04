@@ -36,7 +36,7 @@ const CustomerError = require('./customerError');
 
   async function getCustomerByEmail(email) {
     try {
-      const customer = await Customer.findOne({email: email})
+      const customer = await Customer.findOne({email: email}).populate('account')
       return customer
     } catch (error) {
       throw new CustomerError(error.message, 500)

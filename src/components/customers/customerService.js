@@ -5,6 +5,7 @@ const { hashPassword } = require("../../libraries/bycrpt")
 
 
 
+
   async function getCustomers() {
     try {
       return await customerDAL.getAllCustomers();
@@ -28,19 +29,29 @@ const { hashPassword } = require("../../libraries/bycrpt")
     }
   }
 
+  async function addAccountToCustomer(account, customer){
+    try {
+      customer.account = account
+      customer.save()
+      return customer
+
+    } catch(error) {
+      throw new Error('Failed to add account to customer')
+    }
+  }
+
   async function createCustomer(customerData) {
     
     try {
       customerData.password = await hashPassword(customerData.password)
-      const customer = await customerDAL.createCustomer(customerData);
-      const account = await createCustomerAccount(customer.id)
+      let customer = await customerDAL.createCustomer(customerData);
+      const account = await createCustomerAccount(customer.id);
+      customer = await addAccountToCustomer(account, customer)
+      customer = await customer.populate('account')
       
-      const customerWithAccount = {
-        customer: customer,
-        account: account
-      }
-      return customerWithAccount;
+      return customer
     } catch (error) {
+      console.log(error)
       throw new CustomerError('Failed to create customer', error);
     }
   }
