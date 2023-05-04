@@ -7,7 +7,7 @@ const CustomerAccountSchema = new Schema({
         ref: 'Customer'
     },
 
-    account_num: {
+    accountNumber: {
         type: String,
         required: true
     },

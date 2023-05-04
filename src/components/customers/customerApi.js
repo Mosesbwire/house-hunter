@@ -3,6 +3,7 @@ const {getAllCustomers, getCustomerById, updateCustomer, deleteCustomer } = requ
 const { authenticateUser } = require("../../middleware")
 const router = express.Router();
 
+
 // GET /api/customers
 router.get('/', authenticateUser, getAllCustomers);
 

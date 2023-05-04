@@ -1,8 +1,34 @@
 const customerAccountDAL = require("./customerAccountDAL")
 const CustomerAccountError = require("./customerAccountError")
+const crypto = require("crypto")
 
-async function createCustomerAccount(accountData) {
+async function checkAccountExists(accountNumber) {
+    const account = await customerAccountDAL.getAccountByAccountNumber(accountNumber)
+
+    if (account){
+        return true
+    } 
+    return false
+}
+
+
+
+function generateAccountNumber(id) {
+
+        const hash = crypto.createHash('sha256').update(id.toString()).digest('hex');
+        const num = parseInt(hash.substring(0, 8), 16);
+        const accountNumber = (num % 9000) + 1000;
+        return accountNumber;
+}
+
+
+async function createCustomerAccount(customerId) {
     try {
+        const accountNumber = generateAccountNumber(customerId)
+        let accountData = {
+            customer: customerId,
+            accountNumber: accountNumber
+        }
         const customerAccount = await customerAccountDAL.createCustomerAccount(accountData)
         return customerAccount
     } catch (error) {

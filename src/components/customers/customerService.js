@@ -1,5 +1,6 @@
 const customerDAL = require('./customerDAL');
 const CustomerError = require('./customerError');
+const { createCustomerAccount } = require("../customerAccount")
 const { hashPassword } = require("../../libraries/bycrpt")
 
 
@@ -32,7 +33,13 @@ const { hashPassword } = require("../../libraries/bycrpt")
     try {
       customerData.password = await hashPassword(customerData.password)
       const customer = await customerDAL.createCustomer(customerData);
-      return customer;
+      const account = await createCustomerAccount(customer.id)
+      
+      const customerWithAccount = {
+        customer: customer,
+        account: account
+      }
+      return customerWithAccount;
     } catch (error) {
       throw new CustomerError('Failed to create customer', error);
     }

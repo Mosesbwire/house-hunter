@@ -1,4 +1,3 @@
-
 const customerService = require('./customerService');
 const CustomerError = require('./customerError');
 const { validateCustomerData} = require("./validations")
@@ -12,6 +11,8 @@ const { validateCustomerData} = require("./validations")
 
       }
       const customer = await customerService.createCustomer(req.body);
+      
+
       res.status(201).json(customer);
     } catch (err) {
       if (err instanceof CustomerError) {
