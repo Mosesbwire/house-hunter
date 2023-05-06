@@ -8,21 +8,24 @@ import Pricing from './components/pricing/Pricing'
 import Signin from './components/auth/Signin';
 import Signup from './components/auth/Signup'
 import SavedListings from './components/saved-listing/SavedListings';
+import {ListingContextProvider} from './context/listingsContextProvider';
 function App() {
   return (
-    <Router>
-        <Routes>
-          <Route element={<Layout/>}>
-            <Route path='/' element={<Gallery/>}/>
-            <Route path='/listing' element={<ListingPage/>}/>
-            <Route path='/map' element={<Map/>}/>
-          </Route>
-          <Route path='/pricing' element={<Pricing/>}/>
-          <Route path='/sign-in' element={<Signin/>}/>
-          <Route path='/sign-up' element={<Signup/>}/>
-          <Route path='/saved-listing' element={<SavedListings/>}/>
-        </Routes>
-    </Router>
+    <ListingContextProvider>
+      <Router>
+          <Routes>
+            <Route element={<Layout/>}>
+              <Route path='/' element={<Gallery/>}/>
+              <Route path='/listing' element={<ListingPage/>}/>
+              <Route path='/map' element={<Map/>}/>
+            </Route>
+            <Route path='/pricing' element={<Pricing/>}/>
+            <Route path='/sign-in' element={<Signin/>}/>
+            <Route path='/sign-up' element={<Signup/>}/>
+            <Route path='/saved-listing' element={<SavedListings/>}/>
+          </Routes>
+      </Router>
+    </ListingContextProvider>
   );
 }
 

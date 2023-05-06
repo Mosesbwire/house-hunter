@@ -9,6 +9,8 @@ import img_three from '../../images/img-03.webp'
 import img_four from '../../images/img-04.webp'
 import img_five from '../../images/img-05.webp'
 
+
+
 const Card = props => {
 	const imgContainer = [
 		img_one,
@@ -20,15 +22,17 @@ const Card = props => {
 	];
 	return (
 		<div className='card'>
+
 			<FontAwesomeIcon icon={faHeart} className='crd-save-icon'/>
 			<div className='card-slider'>
-			  <ImageSlider imgContainer={imgContainer} type={"pure"}/>
+			  <ImageSlider imgContainer={props.listing.imageUrls} type={"pure"}/>
 			</div>
+			
 			<div className='card-info'>
-			  <p className='text-300'>Clay City, Kasarani</p>
-			  <p className='text-light text-300'>Nairobi</p>
-			  <p className='text-300'>2 bedroom | 1 bath</p>
-			  <p className='text-bold-500 price'>Ksh. 22,000</p>
+			  <p className='text-300'>{props.listing.location.mainLocation}</p>
+			  <p className='text-light text-300'>{props.listing.location.subLocation}</p>
+			  <p className='text-300'>{props.listing.details.bedrooms} bedroom | {props.listing.details.bathrooms} bath</p>
+			  <p className='text-bold-500 price'>Ksh.{props.listing.rentPrice}</p>
 			</div>
 		</div>
 	)
