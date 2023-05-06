@@ -4,6 +4,7 @@ var logger = require('morgan');
 var cookieParser = require("cookie-parser")
 const passport = require("passport")
 const session = require("express-session")
+const cors = require("cors")
 const connectDB = require('../config/db.config')
 require('dotenv').config()
 const { customerApi } = require('./components/customers')
@@ -22,7 +23,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
-
+app.use(cors({
+    origin: 'http://localhost:3000'
+}))
 app.use(session({
     secret: 'new keyboard',
     resave: false,
