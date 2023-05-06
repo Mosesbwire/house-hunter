@@ -26,12 +26,12 @@ async function getListings() {
             let newListing = {}
 
             for await (const listing of listings){
-                const signedUrls = await getReadImageUrl(listing.image_names)
+                const signedUrls = await getReadImageUrl(listing.imageNames, listing.id)
                 const {
-                    id, name, geoLocation, location, details, onMarket, rent_price, tags
+                    id, name, geoLocation, location, details, onMarket, rentPrice, tags
                 } = listing
 
-                newListing = {...{id, name, geoLocation, location, details, onMarket, rent_price, tags},
+                newListing = {...{id, name, geoLocation, location, details, onMarket, rentPrice, tags},
                     imageUrls: signedUrls
                 }
                 newListings.push(newListing)

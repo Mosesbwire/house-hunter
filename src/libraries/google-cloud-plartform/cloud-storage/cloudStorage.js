@@ -6,16 +6,18 @@ const bucketName = process.env.CLOUD_STORAGE_BUCKET_NAME
 const storage = new Storage({projectId})
 const bucket = storage.bucket(bucketName)
 
-async function getReadImageUrl(imageNames){
+async function getReadImageUrl(imageNames, listingId){
+    const sevenDaysInSeconds = 604800
     const config = {
         version: 'v4',
         action: 'read',
-        expires: Date.now() + (10 * 60 * 1000)
+        expires: Date.now() + sevenDaysInSeconds
     }
     let signedUrls = []
     for await (const name of imageNames){
-        let fullFileName = `listings/${name}`
+        let fullFileName = `listings/${listingId}/${name}`
         const url = await bucket.file(fullFileName).getSignedUrl(config)
+        
         signedUrls.push(url[0])
     }
     return signedUrls   
