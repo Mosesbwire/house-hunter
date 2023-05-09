@@ -7,12 +7,12 @@ import { faMap } from '@fortawesome/free-solid-svg-icons'
 import './Gallery.css'
 import { ListingContext } from '../../context/listingsContextProvider.js'
 import useGetListings from '../../customHooks/useGetListings.js'
-
+import Loading from '../spinner/Loading.js'
 
 const Gallery = props => {
 	const ctx = useContext(ListingContext)
 	useGetListings(ctx)
-  return ctx.listingState.loading ? <p>Loading</p> : (
+  return ctx.listingState.loading ? <Loading/> : (
     <div className='container gallery'>
 		{ctx.listingState.listings.listings.map(listing =>(
 			<Card key={listing.id} listing={listing}/>

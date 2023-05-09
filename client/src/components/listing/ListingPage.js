@@ -9,6 +9,7 @@ import ContactCard from './contact-card/ContactCard.js'
 import Slider from '../slider/ImageSlider.js'
 import { ListingContext } from '../../context/listingsContextProvider.js'
 import { GET_LISTING } from '../../customHooks/types.js'
+import Loading from '../spinner/Loading.js'
 import './listing-page.css'
 
 const ListingPage = props => {
@@ -25,7 +26,7 @@ const ListingPage = props => {
 		
 		
 	}, [id, ctx.listingState.listing])
- return loading ? <p>Loading</p> : (
+ return loading ? <Loading/> : (
 	<div className='listing-page'>
 		<ListingGallery images={ctx.listingState.listing[0].imageUrls} name={ctx.listingState.listing[0].name} />
 	  <div className='listing-contact-row container'>
