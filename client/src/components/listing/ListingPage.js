@@ -36,7 +36,7 @@ const ListingPage = props => {
 		 />
 	     <ContactCard/>
 	  </div>
-	  <LocalInformation/>
+	  <LocalInformation coordinates={ctx.listingState.listing[0].geoLocation}/>
 	  <SimilarListings/>
 	</div>
 

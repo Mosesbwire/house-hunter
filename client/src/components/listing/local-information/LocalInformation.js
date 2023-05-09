@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import './local-information.css'
 import LocalMap from '../local-map/LocalMap'
 
-const LocalInformation = props => {
+const LocalInformation = ({coordinates}) => {
 
 return (
 	<div className='container local-information'>
@@ -14,7 +14,7 @@ return (
 	   <p className='info-category'>Shop & Eat</p>
 	  </div>
 	  <div className='info-map'>
-		<LocalMap/>
+		<LocalMap coordinates={coordinates}/>
 	  </div>
 	</div>
 )
