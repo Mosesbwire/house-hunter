@@ -2,36 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGrip } from '@fortawesome/free-solid-svg-icons'
-import img_one from '../../../images/img-01.webp'
-import img_two from '../../../images/img-02.webp'
-import img_three from '../../../images/img-03.webp'
-import img_four from '../../../images/img-04.webp'
-import img_five from '../../../images/img-05.webp'
 import './listinggallery.css'
-const ListingGallery = props => {
+const ListingGallery = ({images, name})=> {
+	
   return (
     <div>
+		
 		<div className='listing-name container'>
-			<h1>The Mirage</h1>
+			{name ? <h1>{name}</h1>: null}
 		</div>
 		<div className='listing-gallery'>
 			<div className='listing-gallery-primary-img'>
-			  <img src={img_one}/>
-			  <div className= 'listing-counter'>1/5</div>
+			  <img src={images[0]}/>
+			  <div className= 'listing-counter'>1/{images.length}</div>
 			</div>
 			<div className='listing-gallery-grid'>
-			  <div>
-			  <img src={img_two}/>
-			  </div>
-			  <div>
-				<img src={img_three}/>
-			  </div>
-			  <div>
-				<img src={img_four}/>
-			  </div>
-			  <div>
-				<img src={img_five}/>
-			  </div>
+				{images.slice(1, 5).map(img => (
+					 <div>
+					 <img src={img}/>
+					 </div>
+				))}
+
 			  <div className='listing-gallery-showmore'>
 				<FontAwesomeIcon icon={faGrip}/>
 				<div>Show all photos</div>

@@ -1,5 +1,6 @@
 import {
     GET_LISTINGS,
+    GET_LISTING,
     LISTING_ERROR
 } from '../customHooks/types'
 
@@ -18,6 +19,12 @@ export function listingReducer(state = initialState, action){
             return {
                 ...state,
                 listings: payload,
+                loading: false
+            }
+        case GET_LISTING:
+            return {
+                ...state,
+                listing: state.listings.listings.filter(listing => listing.id === payload),
                 loading: false
             }
         case LISTING_ERROR:
