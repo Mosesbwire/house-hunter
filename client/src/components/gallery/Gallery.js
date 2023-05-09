@@ -14,7 +14,6 @@ const Gallery = props => {
 	useGetListings(ctx)
   return ctx.listingState.loading ? <p>Loading</p> : (
     <div className='container gallery'>
-		
 		{ctx.listingState.listings.listings.map(listing =>(
 			<Card key={listing.id} listing={listing}/>
 		))}

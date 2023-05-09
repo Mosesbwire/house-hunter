@@ -1,27 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-regular-svg-icons'
 import ImageSlider from '../slider/ImageSlider.js'
-import img_one from '../../images/img-01.webp'
-import img_two from '../../images/img-02.webp'
-import img_three from '../../images/img-03.webp'
-import img_four from '../../images/img-04.webp'
-import img_five from '../../images/img-05.webp'
-
-
 
 const Card = props => {
-	const imgContainer = [
-		img_one,
-		img_two,
-		img_three,
-		img_four,
-		img_five
-
-	];
+	const navigate = useNavigate()
+	const handleClick = ()=>{
+		navigate(`/${props.listing.details.buildingType}/${props.listing.location.mainLocation}/${props.listing.id}`)
+	}
 	return (
-		<div className='card'>
+		<div className='card' onClick={handleClick}>
 
 			<FontAwesomeIcon icon={faHeart} className='crd-save-icon'/>
 			<div className='card-slider'>
