@@ -46,7 +46,7 @@ async function createListing(req, res, next) {
 async function getAllListings(req, res, next) {
     try {
         const listings = await ListingService.getListings()
-        res.status(200).json({listings: listings})
+        res.status(200).json(listings)
     } catch (err) {
         if (err instanceof ListingError) {
             res.status(err.statusCode).json({error: err.message})

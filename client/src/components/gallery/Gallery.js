@@ -1,4 +1,4 @@
-import React, {useContext}from 'react'
+import React, {useContext, useEffect}from 'react'
 import PropTypes from 'prop-types'
 import Card from './Card.js'
 import Pill from '../badges/Badge.js'
@@ -6,15 +6,19 @@ import Pill from '../badges/Badge.js'
 import { faMap } from '@fortawesome/free-solid-svg-icons'
 import './Gallery.css'
 import { ListingContext } from '../../context/listingsContextProvider.js'
-import useGetListings from '../../customHooks/useGetListings.js'
+import { getListings } from '../../actions/listing.js'
 import Loading from '../spinner/Loading.js'
 
 const Gallery = props => {
 	const ctx = useContext(ListingContext)
-	useGetListings(ctx)
-  return ctx.listingState.loading ? <Loading/> : (
+	useEffect(()=>{
+		getListings(ctx)
+	},[])
+	
+	
+  return ctx.state.loading ? <Loading/> : (
     <div className='container gallery'>
-		{ctx.listingState.listings.listings.map(listing =>(
+		{ctx.state.listings.map(listing =>(
 			<Card key={listing.id} listing={listing}/>
 		))}
 	  <div className='map-badge'>

@@ -6,7 +6,7 @@ export const ListingContext = createContext()
 export function ListingContextProvider(props){
     const [listings, dispatch] = useReducer(listingReducer, initialState)
     return (
-        <ListingContext.Provider value={{listingState: listings, listingDispatch: dispatch}}>
+        <ListingContext.Provider value={{state: listings, dispatch: dispatch}}>
             {props.children}
         </ListingContext.Provider>
     )

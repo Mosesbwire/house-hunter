@@ -8,7 +8,7 @@ import SimilarListings from './similar-listings/SimilarListings.js'
 import ContactCard from './contact-card/ContactCard.js'
 import Slider from '../slider/ImageSlider.js'
 import { ListingContext } from '../../context/listingsContextProvider.js'
-import { GET_LISTING } from '../../customHooks/types.js'
+import { getListing } from '../../actions/listing.js'
 import Loading from '../spinner/Loading.js'
 import './listing-page.css'
 
@@ -19,25 +19,23 @@ const ListingPage = props => {
 	
 	useEffect(()=>{
 
-		if (loading){
-			ctx.listingDispatch({type: GET_LISTING, payload: id})
-			setLoading(false)
-		}
-		
-		
-	}, [id, ctx.listingState.listing])
- return loading ? <Loading/> : (
+		getListing(ctx, id)
+			
+	}, [id])
+	
+ return ctx.state.listing_loading ? <Loading/> : (
 	<div className='listing-page'>
-		<ListingGallery images={ctx.listingState.listing[0].imageUrls} name={ctx.listingState.listing[0].name} />
+		
+		<ListingGallery images={ctx.state.listing.imageUrls} name={ctx.state.listing.name} />
 	  <div className='listing-contact-row container'>
 	     <PrimaryDetails
-		 	rent={ctx.listingState.listing[0].rentPrice}
-		 	location={ctx.listingState.listing[0].location}
-		 	details={ctx.listingState.listing[0].details}
+		 	rent={ctx.state.listing.rentPrice}
+		 	location={ctx.state.listing.location}
+		 	details={ctx.state.listing.details}
 		 />
 	     <ContactCard/>
 	  </div>
-	  <LocalInformation coordinates={ctx.listingState.listing[0].geoLocation}/>
+	  <LocalInformation coordinates={ctx.state.listing.geoLocation}/>
 	  <SimilarListings/>
 	</div>
 

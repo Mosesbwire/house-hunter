@@ -44,14 +44,22 @@ async function getListings() {
 
 async function getListingById(listingId) {
     // make exteranl call to get places close to the location of listing
+    let newListing = {}
     try {
         const listing = await listingDAL.getListingById(listingId)
 
         if (!listing) {
             throw new ListingError('Listing does not exist')
         }
-        getReadImageUrl([listing.id])
-        return listing
+        const signedUrls = await getReadImageUrl(listing.imageNames, listing.id)
+        const {
+            id, name, geoLocation, location, details, onMarket, rentPrice, tags
+        } = listing
+
+        newListing = {...{id, name, geoLocation, location, details, onMarket, rentPrice, tags},
+            imageUrls: signedUrls
+        }
+        return newListing
     } catch (error) {
         throw new ListingError(`Failed to get listing with id ${listingId}`, error)
     }
