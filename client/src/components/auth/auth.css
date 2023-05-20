@@ -67,6 +67,11 @@
     text-decoration: underline;
 }
 
+.create-account-link, .login-link {
+    cursor: pointer;
+}
+
+
 .auth-providers {
     margin-block-start: 2em;
 }
