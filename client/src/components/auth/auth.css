@@ -36,6 +36,14 @@
     padding-inline-start: .65em;
     width: 100%;
 }
+.input-grp > small {
+    color: red;
+    font-weight: 500;
+}
+
+.input-err {
+    border: 1.5px solid red;
+}
 
 .form-btn {
     color: #FFF;

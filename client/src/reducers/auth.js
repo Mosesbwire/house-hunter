@@ -1,13 +1,16 @@
 import {
     REGISTER_SUCCESS,
     LOGIN_SUCCESS,
-    LOGOUT_SUCCESS
+    LOGOUT_SUCCESS,
+    REGISTER_FAIL,
+    LOGIN_FAIL
 } from '../actions/types'
 
 export const authState = {
     user: null,
     isAuthenticated: false,
-    loading: true
+    loading: true,
+    error: null
 }
 
 export function authReducer(state = authState, action) {
@@ -34,6 +37,13 @@ export function authReducer(state = authState, action) {
                 isAuthenticated: false,
                 loading: false,
                 user: null
+            }
+        case REGISTER_FAIL:
+        case LOGIN_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: payload
             }
         default:
             return state;

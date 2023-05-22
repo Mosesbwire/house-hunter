@@ -38,7 +38,7 @@ async function validateCustomerData(req) {
               minSymbols: 0
             }
             if (!validator.isStrongPassword(value,options)){
-              throw new Error("Password must contain letters and numbers")
+              throw new Error("Password minimum length is 6 characters and must contain letters and numbers.")
             }
             return true
           }),

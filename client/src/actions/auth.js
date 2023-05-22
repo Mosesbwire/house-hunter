@@ -15,7 +15,7 @@ export async function registerUser(context, {firstName, lastName, email, passwor
     }
 
     const body = JSON.stringify({firstName,lastName,email, password, confirmPassword})
-
+    
     try {
         const res = await axios.post('http://localhost:5000/api/v1/auth/sign-up/customer', body, config)
     
@@ -24,7 +24,18 @@ export async function registerUser(context, {firstName, lastName, email, passwor
             payload: res.data
         })
     } catch(err) {
-        console.error(err)
+        
+        console.log(err.response.data.error)
+        const errors = {}
+        err.response.data.error.forEach(error =>{
+            let key = error.path
+            let val = error.msg
+            errors[key] = val
+        })
+        context.dispatch({
+            type: REGISTER_FAIL,
+            payload: errors
+        })
     }
 }
 
@@ -45,7 +56,16 @@ export async function login(context, {email, password}) {
         })
 
     } catch(err) {
-        console.error(err)
+        const errors = {}
+        err.response.data.error.forEach(error =>{
+            let key = error.path
+            let val = error.msg
+            errors[key] = val
+        })
+        context.dispatch({
+            type: LOGIN_FAIL,
+            payload: errors
+        })
     }
 }
 
