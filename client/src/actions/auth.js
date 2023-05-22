@@ -25,13 +25,17 @@ export async function registerUser(context, {firstName, lastName, email, passwor
         })
     } catch(err) {
         
-        console.log(err.response.data.error)
+        console.log(err)
         const errors = {}
-        err.response.data.error.forEach(error =>{
-            let key = error.path
-            let val = error.msg
-            errors[key] = val
-        })
+        if (Array.isArray(err.response.data.error)){
+            err.response.data.error.forEach(error =>{
+                let key = error.path
+                let val = error.msg
+                errors[key] = val
+            })
+        } else {
+            errors["error"] = err.response.data.error
+        }
         context.dispatch({
             type: REGISTER_FAIL,
             payload: errors
@@ -56,12 +60,17 @@ export async function login(context, {email, password}) {
         })
 
     } catch(err) {
+
         const errors = {}
-        err.response.data.error.forEach(error =>{
-            let key = error.path
-            let val = error.msg
-            errors[key] = val
-        })
+        if (Array.isArray(err.response.data.error)){
+            err.response.data.error.forEach(error =>{
+                let key = error.path
+                let val = error.msg
+                errors[key] = val
+            })
+        } else {
+            errors["error"] = err.response.data.error
+        }
         context.dispatch({
             type: LOGIN_FAIL,
             payload: errors

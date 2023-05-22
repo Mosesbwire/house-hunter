@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import PropTypes from 'prop-types'
 import { authContext } from '../../context/authContextProvider'
 
@@ -8,11 +8,12 @@ import AuthOption from './AuthOption'
 import Form from './Form'
 import googleLogo from '../../images/google.png'
 import facebookLogo from '../../images/facebook.png'
-import Loading from '../spinner/Loading'
+import Alert from '../alert/Alert'
 import './auth.css'
 
 const Signin = props => {
   const ctx = useContext(authContext)
+  const [showAlert, setShowAlert] = useState(false)
   const navigate = useNavigate()
   const gotoLoginPage =()=>{
     navigate('/sign-in')
@@ -23,8 +24,15 @@ const Signin = props => {
         navigate('/')
     }
   }, [ctx.state.isAuthenticated, navigate])
+
+  useEffect(()=>{
+    if(ctx.state.error){
+      setShowAlert(!showAlert)
+    }
+}, [ctx.state.error])
   return(
     <div >
+       {showAlert && <Alert msg={ctx.state.error.error} alertType={'danger'} setShowAlert={setShowAlert}/>}
       <div className='container signin-form'>
         <h1 className='heading-200'>Sign up</h1>
         <div className='intro-txt'>

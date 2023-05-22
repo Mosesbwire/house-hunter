@@ -1,0 +1,30 @@
+.alert {
+    position: relative;
+    padding: .5em 1em;
+    text-align: center;
+}
+
+.alert p {
+    margin-top: 1em;
+}
+
+.close-alert-btn {
+    margin-right: 1.25em;
+    margin-top: .65em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    cursor: pointer;
+    font-size: .75em;
+    font-weight: 700;
+}
+
+.alert-type-danger {
+    background-color: #C04A46;
+    color: #FFF;
+}
+
+.alert-type-success {
+    background-color: green;
+    color: #FFF;
+}
