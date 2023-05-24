@@ -40,6 +40,9 @@ async function registerUrl(req, res, next){
     }
 }
 
+async function makePayment(req, res, next){
+    
+}
 module.exports = {
     registerUrl,
     confirmMpesaPayment

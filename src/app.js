@@ -1,10 +1,11 @@
 var express = require('express');
 var path = require('path');
 var logger = require('morgan');
-var cookieParser = require("cookie-parser")
 const passport = require("passport")
 const session = require("express-session")
+const mongoStore = require("connect-mongo")
 const cors = require("cors")
+const uuid = require("uuid")
 const connectDB = require('../config/db.config')
 require('dotenv').config()
 const { customerApi } = require('./components/customers')
@@ -23,20 +24,37 @@ initpassportLocalCustomer(passport)
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser())
+
 // app.use(cors({
 //     origin: 'http://localhost:3000'
 // }))
 
 app.use(cors())
+
+const cookie_secure = process.env.NODE_ENV === "production"
+
+
 app.use(session({
-    secret: 'new keyboard',
+    secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+   
+    store: mongoStore.create({mongoUrl: process.env.MONGO_URL}),
+    genid: ()=> {
+        return uuid.v4()
+    },
+    cookie: {
+        maxAge: 10 * 60 * 1000, // 10 mins change later
+        secure: cookie_secure
+    }
 }))
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.get('/', (req, res)=>{
+
+    res.send('This is a test route')
+})
 app.use('/api/v1/auth', authApi)
 app.use('/api/v1/customers', customerApi)
 app.use('/api/v1/listings', listingApi)

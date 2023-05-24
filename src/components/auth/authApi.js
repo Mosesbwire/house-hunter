@@ -7,7 +7,7 @@ const { createCustomer } = require("../customers")
 // POST /api/v1/auth/login/local/customer
 
 router.post('/login/local/customer', loginCredentialsValidations,loginCustomer, (req,res) =>{
-    console.log(req.session)
+    
     res.status(200).json(req.user)
 })
 
