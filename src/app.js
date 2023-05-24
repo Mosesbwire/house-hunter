@@ -11,6 +11,7 @@ const { customerApi } = require('./components/customers')
 const { listingApi } = require("./components/listings")
 const { planApi } = require("./components/plans")
 const { authApi } = require("./components/auth")
+const { mpesaApi } = require("./components/paymentGateways/mpesa")
 const { initpassportLocalCustomer } = require("./libraries")
 
 var app = express();
@@ -23,9 +24,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
-app.use(cors({
-    origin: 'http://localhost:3000'
-}))
+// app.use(cors({
+//     origin: 'http://localhost:3000'
+// }))
+
+app.use(cors())
 app.use(session({
     secret: 'new keyboard',
     resave: false,
@@ -38,5 +41,6 @@ app.use('/api/v1/auth', authApi)
 app.use('/api/v1/customers', customerApi)
 app.use('/api/v1/listings', listingApi)
 app.use('/api/v1/plans', planApi)
+app.use('/api/v1/payments', mpesaApi)
 
 module.exports = app;

@@ -47,9 +47,18 @@ async function getCusomerAccounts() {
 
 async function getCustomerAccountById(accountId){
     try {
-        const account = await customerAccountDAL(accountId)
+        const account = await customerAccountDAL.getCustomerAccountById(accountId)
         return account
     } catch(error) {
+        throw new CustomerAccountError('Failed to fetch account')
+    }
+}
+
+async function getCustomerAccountByAccountNumber(accountNumber){
+    try {
+        const account = await customerAccountDAL.getAccountByAccountNumber(accountNumber)
+        return account
+    } catch (error) {
         throw new CustomerAccountError('Failed to fetch account')
     }
 }
@@ -77,5 +86,6 @@ module.exports = {
     getCusomerAccounts,
     getCustomerAccountById,
     updateCustomerAccount,
-    deleteCustomerAccount
+    deleteCustomerAccount,
+    getCustomerAccountByAccountNumber
 }

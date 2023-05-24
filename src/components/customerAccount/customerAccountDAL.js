@@ -48,7 +48,7 @@ async function deleteCustomerAccount(accountId) {
 
 async function getAccountByAccountNumber(accountNumber){
     try {
-        const account = CustomerAccount.find({accountNumber: accountNumber})
+        const account = CustomerAccount.findOne({accountNumber: accountNumber})
         return account
     } catch(error){
         throw new CustomerAccountError(error.message, 500)
