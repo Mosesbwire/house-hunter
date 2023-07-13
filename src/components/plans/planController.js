@@ -4,10 +4,10 @@ const { validatePlanData } = require("./validation")
 
 async function createPlan(req, res, next) {
     try {
-        const errors = await validatePlanData
-        if (!errors.isEmpty()){
-            return res.status(422).json({error: errors.array()})
-        }
+        // const errors = await validatePlanData()
+        // if (!errors.isEmpty()){
+        //     return res.status(422).json({error: errors.array()})
+        // }
         const plan = await PlanService.createPlan(req.body)
         res.status(201).json(plan)
     } catch (err) {
@@ -22,7 +22,7 @@ async function createPlan(req, res, next) {
 async function getAllPlans(req, res, next) {
     try {
         const plans = await PlanService.getPlans()
-        res.status(200).json({plans: plans})
+        res.status(200).json(plans)
     } catch (err) {
         if (err instanceof PlanError) {
             res.status(400).json({error: err.message})

@@ -1,4 +1,3 @@
-// customerError.js
 
 class CustomerError extends Error {
     constructor(message, statusCode) {

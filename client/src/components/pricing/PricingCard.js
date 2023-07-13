@@ -13,7 +13,7 @@ const PricingCard = props => {
     <div className={isSelected && props.id === props.selectedSubId ? 'prc-card selected-prc-card' : 'prc-card'} onClick={handleClick} >
       <div className='prc-card-wrapper'>
         <p>{props.subType}</p>
-        <p>{props.amount}</p>
+        <p>{`Kshs. ${props.amount}`}</p>
         <button className={isSelected && props.id === props.selectedSubId ? 'pricing-btn selected-btn' : 'pricing-btn'}>{isSelected && props.id === props.selectedSubId ? 'Selected' : 'Select'}</button>
       </div>
     </div>

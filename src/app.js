@@ -14,6 +14,7 @@ const { planApi } = require("./components/plans")
 const { authApi } = require("./components/auth")
 const { mpesaApi } = require("./components/paymentGateways/mpesa")
 const { initpassportLocalCustomer } = require("./libraries")
+const errorHandler = require('./middleware/errorHandler')
 
 var app = express();
 const dbString = process.env.MONGO_URL
@@ -55,10 +56,13 @@ app.get('/', (req, res)=>{
 
     res.send('This is a test route')
 })
+
 app.use('/api/v1/auth', authApi)
 app.use('/api/v1/customers', customerApi)
 app.use('/api/v1/listings', listingApi)
 app.use('/api/v1/plans', planApi)
 app.use('/api/v1/payments', mpesaApi)
+
+app.use(errorHandler)
 
 module.exports = app;

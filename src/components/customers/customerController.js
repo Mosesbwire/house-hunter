@@ -1,14 +1,14 @@
 const customerService = require('./customerService');
 const CustomerError = require('./customerError');
 const { validateCustomerData} = require("./validations")
+const ValidationError = require('../../utils/error/validationError')
   
   async function createCustomer(req, res, next) {
     try {
 
       const errors = await validateCustomerData(req)
       if (!errors.isEmpty()){
-        return res.status(422).json({error: errors.array()})
-
+        throw new ValidationError('Failed to create customer account', 422, errors.array())
       }
       const customer = await customerService.createCustomer(req.body);
       req.login(customer, (err)=>{
@@ -17,15 +17,9 @@ const { validateCustomerData} = require("./validations")
         }
         req.user.password = null
         return res.status(201).json(req.user);
-      })
-
-      
+      }) 
     } catch (err) {
-      if (err instanceof CustomerError) {
-        res.status(400).json({ error: err.message });
-      } else {
-        next(err);
-      }
+      next(err)
     }
   }
 

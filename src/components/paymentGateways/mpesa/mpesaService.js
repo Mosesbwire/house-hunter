@@ -1,6 +1,6 @@
 const MpesaDAL = require('./mpesaDAL')
-const {getCustomerAccountByAccountNumber} = require('../../customerAccount') 
-const { createSubscription } = require('../../subscription')
+const { updateClientSideQueue } = require('../../queue')
+const {getPlanById} = require('../../plans')
 
 async function createTransactionRecord(transactionData){
     try {
@@ -34,7 +34,27 @@ async function createTransactionRecord(transactionData){
     }
 }
 
+async function planPrice(planId){
+    try {
+        const plan = await getPlanById(planId)
+        if (!plan){
+            return null
+        }
+
+        return plan.price
+    }catch (error){
+        console.error(error)
+        
+    }
+}
+
+function queueTransaction(transactionData){
+    updateClientSideQueue.enqueue(transactionData)
+}
+
 module.exports = {
-    createTransactionRecord
+    createTransactionRecord,
+    planPrice,
+    queueTransaction
 }
 

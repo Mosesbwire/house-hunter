@@ -8,6 +8,7 @@ const Payment = props => {
     const [isPaymentSuccessful, setPaymentSuccessful] = useState(false)
 
     const completePayment = ()=>{
+        props.makePayment(true)
         setPaymentSuccessful(true)
     }
   return (

@@ -11,6 +11,7 @@ import Signup from './components/auth/Signup'
 import SavedListings from './components/saved-listing/SavedListings';
 import {ListingContextProvider} from './context/listingsContextProvider';
 import { AuthContextProvider } from './context/authContextProvider';
+
 function App() {
   return (
     <AuthContextProvider>
