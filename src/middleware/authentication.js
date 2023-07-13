@@ -1,6 +1,6 @@
 const passport = require("passport")
 const { body, validationResult } = require("express-validator")
-
+const ValidationError = require('../utils/error/validationError')
 function loginCredentialsValidations(req, res, next) {
     const validations = [
         body("email")
@@ -21,13 +21,13 @@ function loginCredentialsValidations(req, res, next) {
     Promise.all(validations.map((validation)=> validation.run(req)))
         .then(()=> {
             const errors = validationResult(req)
-            if (errors.isEmpty()){
-                return next()
+            if (!errors.isEmpty()){
+                throw new ValidationError('Login Failed', 400, errors.array())
             }
-            res.status(422).json({error: errors.array()})
+            next();
         })
         .catch((error) =>{
-            res.status(500).json({error: error.message})
+           next(error)
         })
 }
 function loginCustomer(req, res, next) {
