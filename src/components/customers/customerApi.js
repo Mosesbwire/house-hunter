@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 // GET /api/customers
-router.get('/', authenticateUser, getAllCustomers);
+router.get('/', getAllCustomers);
 
 // GET /api/customers/:id
 

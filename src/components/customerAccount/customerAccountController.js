@@ -1,5 +1,6 @@
 const CustomerAccountService = require("./customerAccountService")
 const CustomerAccountError = require("./customerAccountError")
+const asyncWrapper = require('../../utils/asyncWrapper')
 
 async function createCustomerAccount(req, res, next) {
     try {
