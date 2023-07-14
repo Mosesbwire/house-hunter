@@ -2,31 +2,30 @@ const customerDAL = require('./customerDAL');
 const CustomerError = require('./customerError');
 const { createCustomerAccount } = require("../customerAccount")
 const { hashPassword } = require("../../libraries/bycrpt")
-
-
-
+const ApplicationError = require('../../utils/error/applicationError')
+const NotFoundError = require('../../utils/error/notFoundError')
+const asyncWrapper = require('../../utils/asyncWrapper')
 
   async function getCustomers() {
-    try {
-      return await customerDAL.getAllCustomers();
-    
-    } catch (error) {
-      throw new CustomerError('Failed to get customers', error);
+    const results = await asyncWrapper(customerDAL.getAllCustomers())
+    if (results.error){
+      throw new ApplicationError('Internal Server Error', 500)
     }
+    return results.data
   }
 
   async function getCustomerById(customerId) {
-    try {
-      const customer = await customerDAL.getCustomerById(customerId);
-
-      if (!customer) {
-        throw new CustomerError(`Customer with id ${customerId} not found`);
-      }
-
-      return customer;
-    } catch (error) {
-      throw new CustomerError(`Failed to get customer with id ${customerId}`, error);
+    const results = await asyncWrapper(customerDAL.getCustomerById(customerId))
+  
+    if (results.error){
+      throw new ApplicationError('Internal Server Error', 500)
     }
+
+    if (!results.data){
+      throw new NotFoundError('Customer')
+    }
+
+    return results.data
   }
 
   async function addAccountToCustomer(account, customer){
@@ -57,31 +56,29 @@ const { hashPassword } = require("../../libraries/bycrpt")
   }
 
   async function updateCustomer(customerId, customerData) {
-    try {
-      const customer = await customerDAL.updateCustomer(customerId, customerData);
-
-      if (!customer) {
-        throw new CustomerError(`Customer with id ${customerId} not found`);
+    
+      const results = await asyncWrapper(customerDAL.updateCustomer(customerId, customerData));
+      if (results.error){
+        throw new ApplicationError('INTERNAL SERVER ERROR', 500)
       }
 
-      return customer;
-    } catch (error) {
-      throw new CustomerError(`Failed to update customer with id ${customerId}`, error);
-    }
+      if (!results.data){
+        throw new NotFoundError('Customer')
+      }
+      return results.data
   }
 
   async function deleteCustomer(customerId) {
-    try {
-      const customer = await customerDAL.deleteCustomer(customerId);
-
-      if (!customer) {
-        throw new CustomerError(`Customer with id ${customerId} not found`);
+      const results = await asyncWrapper(customerDAL.deleteCustomer(customerId));
+      if (results.error){
+        throw new ApplicationError('INTERNAL SERVER ERROR', 500)
       }
 
-      return customer;
-    } catch (error) {
-      throw new CustomerError(`Failed to delete customer with id ${customerId}`, error);
-    }
+      if (!results.data){
+        throw new NotFoundError('Customer')
+      }
+
+      return results.data;
   }
 
 

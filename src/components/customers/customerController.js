@@ -2,6 +2,7 @@ const customerService = require('./customerService');
 const CustomerError = require('./customerError');
 const { validateCustomerData} = require("./validations")
 const ValidationError = require('../../utils/error/validationError')
+const asyncWrapper = require('../../utils/asyncWrapper')
   
   async function createCustomer(req, res, next) {
     try {
@@ -24,31 +25,19 @@ const ValidationError = require('../../utils/error/validationError')
   }
 
   async function getAllCustomers(req, res, next) {
-    try {
-      const allCustomers = await customerService.getCustomers();
-      res.status(200).json({ customers: allCustomers });
-    } catch (err) {
-     
-      if (err instanceof CustomerError) {
-        res.status(err.statusCode).json({ error: err.message });
-      } else {
-       
-        next(err);
+      const results = await asyncWrapper(customerService.getCustomers());
+      if (results.error){
+        return next(results.error)
       }
-    }
+      res.status(200).json({ customers: results.data });
   }
 
   async function getCustomerById(req, res, next) {
-    try {
-      const customer = await customerService.getCustomerById(req.params.id);
-      res.json(customer);
-    } catch (err) {
-      if (err instanceof CustomerError) {
-        res.status(404).json({ error: err.message });
-      } else {
-        next(err);
+      const results = await asyncWrapper(customerService.getCustomerById(req.params.id));
+      if (results.error){
+        return next(results.error)
       }
-    }
+      res.json(results.data);
   }
 
   async function updateCustomer(req, res, next) {
