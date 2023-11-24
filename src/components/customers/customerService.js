@@ -5,6 +5,7 @@ const { hashPassword } = require("../../libraries/bycrpt")
 const ApplicationError = require('../../utils/error/applicationError')
 const NotFoundError = require('../../utils/error/notFoundError')
 const asyncWrapper = require('../../utils/asyncWrapper')
+const {getListingById} = require('../listings')
 
   async function getCustomers() {
     const results = await asyncWrapper(customerDAL.getAllCustomers())
@@ -81,11 +82,43 @@ const asyncWrapper = require('../../utils/asyncWrapper')
       return results.data;
   }
 
+  async function addLikedListing(customerId, listingId) {
+    const results = await asyncWrapper(customerDAL.addLikedListing(customerId, listingId));
+    if (results.error){
+      throw new ApplicationError('INTERNAL SERVER ERROR', 500)
+    }
+    if (!results.data) {
+      throw new NotFoundError('Customer')
+    }
+    return results.data
+  }
+
+  async function viewLikedListings(customerId) {
+    const results = await asyncWrapper(customerDAL.viewLikedListings(customerId));
+    if (results.error) {
+      throw new ApplicationError('INTERNAL SERVER ERROR', 500)
+    }
+    const listingIds = results.data
+    const promises = listingIds.map((id) => {
+      return getListingById(id)
+    })
+    const data = await Promise.allSettled(promises)
+    const resp = data.map(listing => {
+      if (listing.status === 'fulfilled') {
+        return listing.value
+      }
+
+    })
+    return resp
+  }
+
 
 module.exports = {
   getCustomers,
   getCustomerById,
   createCustomer,
   updateCustomer,
-  deleteCustomer
+  deleteCustomer,
+  addLikedListing,
+  viewLikedListings
 }

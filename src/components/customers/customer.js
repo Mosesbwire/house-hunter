@@ -30,7 +30,12 @@ const CustomerSchema = new Schema({
     account: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CustomerAccount'
-    }
+    },
+    savedListings: [
+        {type: mongoose.Schema.Types.ObjectId,
+            ref: 'Listing'
+        }
+    ]
 })
 
 module.exports = mongoose.model('Customer', CustomerSchema);

@@ -61,6 +61,48 @@ const CustomerError = require('./customerError');
     }
   }
 
+  async function addLikedListing(customerId,listingId) {
+    try {
+      const customer = await getCustomerById(customerId)
+      if (!customer) {
+        return null
+      }
+      let index;
+      let found = false
+      customer.savedListings.forEach((listing, idx) => {
+        
+        if (listing.toString() === listingId) {
+    
+          index = idx;
+          found = true;
+          return;
+        }
+      })
+      if (found) {
+        customer.savedListings.splice(index, 1);
+      } else {
+        customer.savedListings.push(listingId)
+      }
+      customer.save()
+      return customer.savedListings
+
+    } catch (error) {
+      throw new CustomerError(error.message, 500)
+    }
+  }
+
+  async function viewLikedListings(customerId) {
+    try {
+      const customer = await getCustomerById(customerId)
+      if (!customer) {
+        return null
+      }
+      return customer.savedListings
+    } catch (error) {
+      throw new CustomerError(error.message, 500)
+    }
+  }
+
 
 module.exports = {
   createCustomer,
@@ -68,5 +110,7 @@ module.exports = {
   getCustomerById,
   getCustomerByEmail,
   updateCustomer,
-  deleteCustomer
+  deleteCustomer,
+  addLikedListing,
+  viewLikedListings
 }

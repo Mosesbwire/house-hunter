@@ -97,10 +97,37 @@ const asyncWrapper = require('../../utils/asyncWrapper')
     }
   }
 
+  async function addLikedListing(req, res, next) {
+  
+    try {
+      const results = await asyncWrapper(customerService.addLikedListing(req.params.id, req.params.listingId))
+      if (results.error){
+        return next(results.error)
+      }
+      res.status(200).json('OK')
+    } catch (err) {
+      next(err)
+    }
+  }
+
+  async function viewLikedListings(req, res, next) {
+    try {
+      const results = await asyncWrapper(customerService.viewLikedListings(req.params.id))
+      if (results.error) {
+        return next(results.error)
+      }
+      
+      res.status(200).json(results.data)
+    } catch (err) {
+      next(err)
+    }
+  }
 module.exports = {
   createCustomer,
   getAllCustomers,
   getCustomerById,
   updateCustomer,
-  deleteCustomer
+  deleteCustomer,
+  addLikedListing,
+  viewLikedListings
 };
