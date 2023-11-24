@@ -53,5 +53,6 @@
 		position: fixed;
 		bottom: 0;
 		left: 45%;
+		cursor: pointer;
 	}
 }

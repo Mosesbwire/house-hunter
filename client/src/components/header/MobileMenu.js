@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faX } from '@fortawesome/free-solid-svg-icons'
 import { authContext } from '../../context/authContextProvider'
@@ -24,10 +24,13 @@ const MobileMenu = props => {
                 <FontAwesomeIcon icon={faX}/>
             </div>
             <div className='menu-items'>
-                <div className='row menu-item saved-listing'>
-                    <FontAwesomeIcon icon={faHeart} className='saved-icon'/>
-                    <div>Saved Listings</div>
-                </div>
+                <Link to={'/saved-listing'}>
+
+                    <div className='row menu-item saved-listing'>
+                        <FontAwesomeIcon icon={faHeart} className='saved-icon'/>
+                        <div>Saved Listings</div>
+                    </div>
+                </Link>
                 <button className='menu-auth-btn' onClick={handleClick}>
                     {ctx.state.isAuthenticated ? 'Logout': 'Login'}
                 </button>

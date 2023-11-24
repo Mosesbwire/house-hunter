@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import  Logo from '../../images/logo4.png'
 import Filter from './Filter'
@@ -11,15 +12,26 @@ import './Header.css'
 
 const Header = props => {
   const [isOpen, setIsOpen] = useState(false)
+  const [showFilter, setShowFilter] = useState(false)
   const toggleMenu = (value)=> {
-
     setIsOpen(value)
   }
+  const { pathname } = useLocation()
+  useEffect(() => {
+    if (pathname === '/'){
+      setShowFilter(true)
+    } else {
+      setShowFilter(false)
+    }
+  }, [pathname])
+  
   return (
     <div className='header'>
       <div className='container header-wrapper'>
 	      <div className='branding'>
-	        <img src={Logo} alt='logo' className='logo'/>
+          <Link to={'/'}>
+	          <img src={Logo} alt='logo' className='logo'/>
+          </Link>
 	      </div>
 
          <div className='row right-header'>
@@ -27,7 +39,7 @@ const Header = props => {
               <Search/>
             </div>
             <div>
-              <Filter/>
+              {showFilter ? <Filter/> : null}
             </div>
             <div className='mobile-menu-icon' onClick={()=> toggleMenu(true)}>
               <FontAwesomeIcon icon={faBars}/>

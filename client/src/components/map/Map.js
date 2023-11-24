@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import { faListUl } from '@fortawesome/free-solid-svg-icons'
@@ -7,6 +8,10 @@ import 'leaflet/dist/leaflet.css'
 import './map.css'
 
 const Map = props => {
+	const navigate = useNavigate()
+	const navigateToHouseList = () => {
+		navigate('/')
+	}
   return (
     <div>
         <MapContainer center={[-1.36, 36.83]} zoom={13} scrollWhellZoom={false} className='map'>
@@ -20,7 +25,7 @@ const Map = props => {
 	  		</Popup>
 	           </Marker>
 	  	</MapContainer>
-		<div className='list-pill'>
+		<div className='list-pill' onClick={navigateToHouseList}>
 			<Pill name={"Show list"} icon={faListUl}/>
 		</div>
     </div>

@@ -20,5 +20,6 @@
     .list-pill {
         left: 48%;
         bottom: 20%;
+        cursor: pointer;
     }
 }
