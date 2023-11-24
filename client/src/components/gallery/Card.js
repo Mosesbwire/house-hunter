@@ -7,11 +7,11 @@ import ImageSlider from '../slider/ImageSlider.js'
 
 const Card = props => {
 	const navigate = useNavigate()
-	const handleClick = ()=>{
+	const handleClick = (e)=>{
 		navigate(`/${props.listing.details.buildingType}/${props.listing.location.mainLocation}/${props.listing.id}`)
 	}
 	return (
-		<div className='card' onClick={handleClick}>
+		<div className='card' onClick={(e) => handleClick(e)}>
 
 			<FontAwesomeIcon icon={faHeart} className='crd-save-icon'/>
 			<div className='card-slider'>

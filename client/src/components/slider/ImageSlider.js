@@ -39,13 +39,14 @@ const ImageSlider = props => {
 	}, [index, isHovered])
 
 	
-	const goToNext = ()=> {
+	const goToNext = (e)=> {
+		e.stopPropagation()
 		slider.current.style.transform = `translateX(-${(index + 1) * 100}%)`;
 		setIndex(index + 1);
 	}
 
-	const goToPrev = ()=> {
-		
+	const goToPrev = (e)=> {
+		e.stopPropagation()
 		slider.current.style.transform = `translateX(-${(index - 1) * 100}%)`;
 		setIndex(index - 1);
 	}
@@ -62,19 +63,19 @@ const ImageSlider = props => {
     <div>
      <div className='slider-wrapper'onMouseEnter={showArrows} onMouseLeave={removeArrows}>
 	{!isShowLeft ? null :
-	<div className='angle angle-left' onClick={goToPrev}>
-	  <FontAwesomeIcon icon={faAngleLeft}/>
+	<div className='angle angle-left' onClick={e => goToPrev(e)}>
+	  <FontAwesomeIcon className='y' icon={faAngleLeft}/>
 	</div>}
 	{isShowRight ? 
-	<div className='angle angle-right' onClick={goToNext}>
-	  <FontAwesomeIcon icon={faAngleRight}/>
+	<div className='angle angle-right' onClick={e => goToNext(e)}>
+	  <FontAwesomeIcon className='x'icon={faAngleRight}/>
 	</div> : null}
 	<div className='slider'>
 	  <div className='slider-container' ref={slider}>
 		{props.imgContainer.length > 0 ?<Fragment>
 			{props.imgContainer.map((img,idx)=> (
 				<div className={carouselType} key={idx}>
-					<img src={img}/>
+					<img className='plc-img' src={img}/>
 				</div>
 			))}
 		</Fragment> : null}
