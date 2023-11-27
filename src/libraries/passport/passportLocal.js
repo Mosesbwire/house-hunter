@@ -1,6 +1,5 @@
 
 const LocalStrategy = require("passport-local")
-const { getCustomerByEmail } = require("../../components/customers")
 const { comparePassword } = require("../bycrpt")
 
 const options = {
@@ -9,6 +8,8 @@ const options = {
 }
 
 const verify = async (email, password, cb) => {
+
+    const { getCustomerByEmail } = require("../../components/customers")
     try {
         const customer = await getCustomerByEmail(email)
 

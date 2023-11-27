@@ -41,13 +41,12 @@ function loginCustomer(req, res, next) {
         if (!customer) {
             return res.status(401).json({error: info.message})
         }
-
         try {
             await req.login(customer,()=>{
                 return next()
             })
         }catch (error){
-            console.log(error)
+            
             return res.status(500).json({error: 'Internal server error'})
         }
     })(req, res, next)
