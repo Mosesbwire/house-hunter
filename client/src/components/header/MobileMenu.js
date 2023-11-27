@@ -24,13 +24,13 @@ const MobileMenu = props => {
                 <FontAwesomeIcon icon={faX}/>
             </div>
             <div className='menu-items'>
+                {ctx.state.isAuthenticated ? 
                 <Link to={'/saved-listing'}>
-
                     <div className='row menu-item saved-listing'>
                         <FontAwesomeIcon icon={faHeart} className='saved-icon'/>
                         <div>Saved Listings</div>
                     </div>
-                </Link>
+                </Link> : null}
                 <button className='menu-auth-btn' onClick={handleClick}>
                     {ctx.state.isAuthenticated ? 'Logout': 'Login'}
                 </button>

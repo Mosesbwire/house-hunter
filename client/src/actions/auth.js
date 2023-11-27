@@ -1,4 +1,5 @@
 import axios from "axios";
+import { saveToSessionStorage } from "../utils/utils";
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
@@ -18,11 +19,12 @@ export async function registerUser(context, {firstName, lastName, email, passwor
     
     try {
         const res = await axios.post('http://localhost:5000/api/v1/auth/sign-up/customer', body, config)
-    
+        console.lod(res.data)
         context.dispatch({
             type: REGISTER_SUCCESS,
             payload: res.data
         })
+        saveToSessionStorage('user', res.data);
     } catch(err) {
         
         console.log(err)
@@ -54,11 +56,12 @@ export async function login(context, {email, password}) {
 
     try {
         const res = await axios.post('http://localhost:5000/api/v1/auth/login/local/customer', body, config)
+        console.log(res.data);
         context.dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data
         })
-
+        saveToSessionStorage('user', res.data);
     } catch(err) {
 
         const errors = {}
