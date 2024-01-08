@@ -26,10 +26,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// app.use(cors({
-//     origin: 'http://localhost:3000'
-// }))
-
 app.use(cors())
 
 const cookie_secure = process.env.NODE_ENV === "production"
@@ -45,7 +41,7 @@ app.use(session({
         return uuid.v4()
     },
     cookie: {
-        maxAge: 10 * 60 * 1000, // 10 mins change later
+        maxAge: 24 * 60  * 60 * 1000,
         secure: cookie_secure
     }
 }))
