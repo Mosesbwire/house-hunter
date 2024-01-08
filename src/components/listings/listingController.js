@@ -5,33 +5,34 @@ const { validateListingData } = require("./validation")
 
 async function createListing(req, res, next) {
     try {
-        const data = {
-            name: "The Loft",
-            location : {
-                mainLocation: "Westlands",
-                subLocation: "Peponi Rd",
-                locationIdentifiers: ["Peponi rd 158"]
-            },
-            geoLocation: {
-                latitude: -1.2927,
-                longitude: 36.7965
-            },
-            details: {
-                bedrooms: 1,
-                buildingType: "Apartment",
-                masterEnsuite: false,
-                bathrooms: 1
-            },
-            onMarket: true,
-            rentPrice: 60000,
-            tags: ["Serviced Apartment", "Concierge services", "Rooftop Swimming pool", "Gym"]
+        // const data = {
+        //     name: "",
+        //     location : {
+        //         mainLocation: "area",
+        //         subLocation: "details",
+        //         locationIdentifiers: ["directions"]
+        //     },
+        //     geoLocation: {
+        //         latitude: -3.2927,
+        //         longitude: 23.7965
+        //     },
+        //     details: {
+        //         bedrooms: 0,
+        //         buildingType: "Apartment",
+        //         masterEnsuite: false,
+        //         bathrooms: 1
+        //     },
+        //     onMarket: true,
+        //     rentPrice: 10000,
+        //     tags: ["clean", "furnished","spaciuos studio"]
 
-        }
+        // }
         // const errors = await validateListingData(req)
         // if (!errors.isEmpty()){
         //     res.status(422).json({error: errors.array()})
         // }
         const listing = await ListingService.createListing(data, req.files)
+        
         req.files = null
         res.status(201).json(listing)
     } catch (err) {

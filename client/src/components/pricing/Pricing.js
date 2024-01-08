@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { getPricingPlans } from '../../actions/plan'
 import './pricing.css'
+import { Link } from 'react-router-dom'
 
 const Pricing = props => {
   const paymentOptionRef = useRef(null)
@@ -76,7 +77,9 @@ const Pricing = props => {
   return (
     <div className='container'>
       <div className='pricing-wrapper'>
-        <img src={Logo} className='pricing-logo'/>
+        <Link to={'/'}>
+          <img src={Logo} className='pricing-logo' />
+        </Link>
         <h1 className='prc-heading heading-100'>Get unlimited access to all features on House Hunter</h1>
         <p>Get all features from as low as Ksh.350/day</p>
         <div className='features-list'>

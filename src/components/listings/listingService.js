@@ -1,42 +1,31 @@
 const listingDAL = require('./listingDAL')
 const ListingError = require('./listingError')
-const { upload_cloud_storage, getReadImageUrl } = require("../../libraries")
 
 async function createListing(listingData, images) {
-    const image_names = images.map(img => {
-        return img.originalname
+    
+    const Images = images.map((img) => {
+        const baseString = Buffer.from(img.buffer).toString('base64');
+        return {contentType: img.mimetype, imgurl: baseString}
     })
+    console.log(Images);
     try {
-        listingData.imageNames = image_names
+        listingData.images = Images
         const listing = await listingDAL.createListing(listingData)
-        if (listing){
-            upload_cloud_storage(listing._id, images)
-        }
         return listing
     } catch (error) {
+        console.log(error);
         throw new ListingError("Failed to create listing", error) 
     }
 }
 
 async function getListings() {
     
-    try {
-            const listings = await listingDAL.getAllListings()   
-            let newListings = []
-            let newListing = {}
-
-            for await (const listing of listings){
-                const signedUrls = await getReadImageUrl(listing.imageNames, listing.id)
-                const {
-                    id, name, geoLocation, location, details, onMarket, rentPrice, tags
-                } = listing
-
-                newListing = {...{id, name, geoLocation, location, details, onMarket, rentPrice, tags},
-                    imageUrls: signedUrls
-                }
-                newListings.push(newListing)
-            }
-            return newListings
+    try {   
+            
+            
+            const listings = await listingDAL.getAllListings();
+            
+            return listings
     } catch (error) {
         throw new ListingError('Failed to get listings', error)
     }
@@ -51,15 +40,7 @@ async function getListingById(listingId) {
         if (!listing) {
             throw new ListingError('Listing does not exist')
         }
-        const signedUrls = await getReadImageUrl(listing.imageNames, listing.id)
-        const {
-            id, name, geoLocation, location, details, onMarket, rentPrice, tags
-        } = listing
-
-        newListing = {...{id, name, geoLocation, location, details, onMarket, rentPrice, tags},
-            imageUrls: signedUrls
-        }
-        return newListing
+        return listing
     } catch (error) {
         throw new ListingError(`Failed to get listing with id ${listingId}`, error)
     }

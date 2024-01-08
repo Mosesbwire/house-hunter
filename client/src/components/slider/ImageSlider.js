@@ -75,7 +75,8 @@ const ImageSlider = props => {
 		{props.imgContainer.length > 0 ?<Fragment>
 			{props.imgContainer.map((img,idx)=> (
 				<div className={carouselType} key={idx}>
-					<img className='plc-img' src={img}/>
+					
+					<img className='plc-img' src={`data:${img.contentType};base64,${img.imgurl}`} alt='house'/> 
 				</div>
 			))}
 		</Fragment> : null}

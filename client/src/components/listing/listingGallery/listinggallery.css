@@ -4,11 +4,18 @@
 }
 .listing-gallery-grid {
 	display: none;
+	
 }
 
 
 .listing-gallery-primary-img {
 	position: relative;
+	
+}
+
+.listing-gallery-primary-img > img {
+	object-fit: cover;
+	height: 100%;
 }
 
 .listing-counter {
@@ -37,15 +44,26 @@
 		column-gap: .5em;
 		border-radius: 20px;
 		overflow: hidden;
+		max-height: 70vh;
+		min-height: 70vh;
 	}
 
 	.listing-gallery-grid {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: repeat(2, 1fr);
 		gap: .5em;
 		position: relative;
 	} 
+
+	.listing-gallery-img {
+		
+		max-height: 35vh;
+	}
+	.listing-gallery-img > img {
+		height: 100%;
+		width: 100%;
+		object-fit: cover;
+	}
 
 	.listing-gallery-showmore {
 		position: absolute;

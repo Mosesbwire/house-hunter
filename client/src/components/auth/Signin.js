@@ -42,11 +42,11 @@ const Signin = props => {
             <p>It takes less than a minute</p>
         </div>
         <div className="auth-providers">
-            <AuthOption img_src={googleLogo} action={"Sign in"} provider={"Google"}/>
-            <AuthOption img_src={facebookLogo} action={"Sign in"} provider={"Facebook"}/>
+            {/* <AuthOption img_src={googleLogo} action={"Sign in"} provider={"Google"}/>
+            <AuthOption img_src={facebookLogo} action={"Sign in"} provider={"Facebook"}/> */}
         </div>
         <Form buttonText={"Sign in"} action={"signin"}/>
-        <p className='frg-pwd'>Forgot password ?</p>
+        {/* <p className='frg-pwd'>Forgot password ?</p> */}
       </div>
     </div>
   )

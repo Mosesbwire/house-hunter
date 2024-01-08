@@ -3,6 +3,7 @@ function returnError(err, req, res){
     if (err.name === 'NotFoundError'){
         err.message = `${err.message} at specified path ${req.path} not found`
     }
+    console.log(err);
     res.status(statusCode).json({
         statusCode,
         message: err.message,

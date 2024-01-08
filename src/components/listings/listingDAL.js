@@ -15,7 +15,7 @@ async function createListing(listingData){
 
 async function getAllListings() {
     try {
-        const listings = await Listing.find({})
+        const listings = await Listing.find({});
         return listings
     }catch (error) {
         throw new ListingError(error.message, 500)

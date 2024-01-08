@@ -42,8 +42,8 @@ const Signin = props => {
             </p>
         </div>
         <div className="auth-providers">
-            <AuthOption img_src={googleLogo} action={"Sign up"} provider={"Google"}/>
-            <AuthOption img_src={facebookLogo} action={"Sign up"} provider={"Facebook"}/>
+            {/* <AuthOption img_src={googleLogo} action={"Sign up"} provider={"Google"}/>
+            <AuthOption img_src={facebookLogo} action={"Sign up"} provider={"Facebook"}/> */}
         </div>
         <Form buttonText={"Sign up"} action={"signup"}/>
       </div>

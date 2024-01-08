@@ -16,8 +16,9 @@ const Card = props => {
 	const ctx = useContext(authContext) 
 	const listingCtx = useContext(ListingContext)
 	const [isLiked, setIsLiked] = useState(false);
+	
 	const handleClick = (e)=>{
-		navigate(`/${props.listing.details.buildingType}/${props.listing.location.mainLocation}/${props.listing.id}`)
+		navigate(`/${props.listing.details.buildingType}/${props.listing.location.mainLocation}/${props.listing._id}`)
 	}
 
 	const saveListing = async (e) => {
@@ -57,7 +58,7 @@ const Card = props => {
 		<div className='card' onClick={(e) => handleClick(e)}>
 			<FontAwesomeIcon icon={isLiked ? faHeartSolid : faHeart} className='crd-save-icon'onClick={e => saveListing(e)}/>
 			<div className='card-slider'>
-			  <ImageSlider imgContainer={props.listing.imageUrls} type={"pure"}/>
+			  <ImageSlider imgContainer={props.listing.images} type={"pure"}/>
 			</div>
 			
 			<div className='card-info'>
