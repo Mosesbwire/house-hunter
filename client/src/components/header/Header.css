@@ -3,6 +3,7 @@
 	padding-block: 1em;
 	display: flex;
 	position: relative;
+	overflow: hidden;
 }
 
 .header-wrapper {
