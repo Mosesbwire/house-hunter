@@ -5,28 +5,28 @@ const { validateListingData } = require("./validation")
 
 async function createListing(req, res, next) {
     try {
-        // const data = {
-        //     name: "",
-        //     location : {
-        //         mainLocation: "area",
-        //         subLocation: "details",
-        //         locationIdentifiers: ["directions"]
-        //     },
-        //     geoLocation: {
-        //         latitude: -3.2927,
-        //         longitude: 23.7965
-        //     },
-        //     details: {
-        //         bedrooms: 0,
-        //         buildingType: "Apartment",
-        //         masterEnsuite: false,
-        //         bathrooms: 1
-        //     },
-        //     onMarket: true,
-        //     rentPrice: 10000,
-        //     tags: ["clean", "furnished","spaciuos studio"]
+        const data = {
+            name: "Casa Villa",
+            location : {
+                mainLocation: "Kahawa West",
+                subLocation: "QuickMart",
+                locationIdentifiers: ["next to quick mart"]
+            },
+            geoLocation: {
+                latitude: -1.1845921992802158,
+                longitude: 36.917097010566806
+            },
+            details: {
+                bedrooms: 3,
+                buildingType: "Apartment",
+                masterEnsuite: true,
+                bathrooms: 1
+            },
+            onMarket: true,
+            rentPrice: 45000,
+            tags: ["clean", "furnished","spaciuos", "master ensuite", "elevator"]
 
-        // }
+        }
         // const errors = await validateListingData(req)
         // if (!errors.isEmpty()){
         //     res.status(422).json({error: errors.array()})

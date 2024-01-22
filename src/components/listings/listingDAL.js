@@ -1,10 +1,13 @@
 const Listing = require('./listing')
+const { createImage } = require('../images/imageService')
 const ListingError = require('./listingError')
 
-async function createListing(listingData){
+async function createListing(listingData, images){
 
     try {
         const listing = new Listing(listingData)
+        const imageUrls = await createImage(images, listing.id);
+        listing.imageUrls = imageUrls
         const savedListing = await listing.save()
         return savedListing
     }catch(error) {

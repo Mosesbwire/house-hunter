@@ -3,17 +3,12 @@ const ListingError = require('./listingError')
 
 async function createListing(listingData, images) {
     
-    const Images = images.map((img) => {
-        const baseString = Buffer.from(img.buffer).toString('base64');
-        return {contentType: img.mimetype, imgurl: baseString}
-    })
-    console.log(Images);
     try {
-        listingData.images = Images
-        const listing = await listingDAL.createListing(listingData)
+
+        const listing = await listingDAL.createListing(listingData, images);
         return listing
     } catch (error) {
-        console.log(error);
+        
         throw new ListingError("Failed to create listing", error) 
     }
 }

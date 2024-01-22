@@ -55,10 +55,9 @@ const ListingSchema = new Schema({
         type: Number,
         required: true
     },
-    images:[{
-        contentType: String,
-        imgurl: String
-    }],
+    imageUrls: {
+        type: [String]
+    },
     tags: {
         type: [String]
     }
