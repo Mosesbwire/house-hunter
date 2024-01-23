@@ -14,6 +14,7 @@ const ImageSlider = props => {
 	const [carouselType, setCarouselType] = useState("");
 	const [carouselLen, setCarouselLen] = useState(0);
 	const slider = useRef();
+	
 
 	useEffect(()=> {
 		if (props.type === "owl"){
@@ -34,6 +35,7 @@ const ImageSlider = props => {
 	}, [])
 
 	useEffect(()=>{
+		
 		index > 0 && isHovered ? setShowLeft(true) : setShowLeft(false)
 		index < carouselLen - 1 && isHovered ? setShowRight(true) : setShowRight(false)
 	}, [index, isHovered])
@@ -67,7 +69,7 @@ const ImageSlider = props => {
 	  <FontAwesomeIcon className='y' icon={faAngleLeft}/>
 	</div>}
 	{isShowRight ? 
-	<div className='angle angle-right' onClick={e => goToNext(e)}>
+	<div className='angle angle-right'onClick={e => goToNext(e)}>
 	  <FontAwesomeIcon className='x'icon={faAngleRight}/>
 	</div> : null}
 	<div className='slider'>
@@ -76,7 +78,7 @@ const ImageSlider = props => {
 			{props.imgContainer.map((img,idx)=> (
 				<div className={carouselType} key={idx}>
 					
-					<img className='plc-img' src={`data:${img.contentType};base64,${img.imgurl}`} alt='house'/> 
+					<img className='plc-img' src={img} alt='house'/> 
 				</div>
 			))}
 		</Fragment> : null}

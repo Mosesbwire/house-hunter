@@ -26,7 +26,7 @@ const ListingPage = props => {
  return ctx.state.listing_loading ? <Loading/> : (
 	<div className='listing-page'>
 		
-		<ListingGallery images={ctx.state.listing.images} name={ctx.state.listing.name} />
+		<ListingGallery images={ctx.state.listing.imageUrls} name={ctx.state.listing.name} />
 	  <div className='listing-contact-row container'>
 	     <PrimaryDetails
 		 	rent={ctx.state.listing.rentPrice}

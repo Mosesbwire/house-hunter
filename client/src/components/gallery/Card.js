@@ -58,7 +58,7 @@ const Card = props => {
 		<div className='card' onClick={(e) => handleClick(e)}>
 			<FontAwesomeIcon icon={isLiked ? faHeartSolid : faHeart} className='crd-save-icon'onClick={e => saveListing(e)}/>
 			<div className='card-slider'>
-			  <ImageSlider imgContainer={props.listing.images} type={"pure"}/>
+			  <ImageSlider imgContainer={props.listing.imageUrls} type={"pure"}/>
 			</div>
 			
 			<div className='card-info'>
