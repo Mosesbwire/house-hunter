@@ -32,6 +32,17 @@ function imageBuffer(image) {
     return {imageBuffer: baseString, mimeType: image.mimetype}
 }
 
+function createImageTmpDir() {
+    try {
+        fs.mkdirSync(`${__dirname}/tmp`)
+    } catch (err) {
+        if (err instanceof Error && err.message.split(":")[0] === 'EEXIST') {
+            return
+        }
+        throw new Error('Failed to create tmp file at: ' + __dirname + '/tmp')
+    }
+}
+
 function bufferImage(image) {
     try {
         const path = `${__dirname}/tmp`
@@ -40,7 +51,7 @@ function bufferImage(image) {
         fs.writeFileSync(fullPath, Buffer.from(image.imageBuffer, 'base64'));
         return fullPath
     } catch (err) {
-        
+        console.log(err)
         return new ListingError('Failed to write image', 500);
     }
 }
@@ -66,6 +77,7 @@ async function getImage(imageId) {
 
 module.exports = {
     createImage,
-    getImage
+    getImage,
+    createImageTmpDir
 }
 

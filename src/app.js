@@ -13,7 +13,7 @@ const { listingApi } = require("./components/listings")
 const { planApi } = require("./components/plans")
 const { authApi } = require("./components/auth")
 const { mpesaApi } = require("./components/paymentGateways/mpesa")
-const { imageApi } = require("./components/images")
+const { imageApi, createImageTmpDir } = require("./components/images")
 const { initpassportLocalCustomer } = require("./libraries")
 const errorHandler = require('./middleware/errorHandler')
 
@@ -22,6 +22,7 @@ const dbString = process.env.MONGO_URL
 connectDB(dbString)
 
 initpassportLocalCustomer(passport)
+createImageTmpDir()
 
 app.use(logger('dev'));
 app.use(express.json());
