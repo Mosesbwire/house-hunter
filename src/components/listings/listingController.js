@@ -5,28 +5,29 @@ const { validateListingData } = require("./validation")
 
 async function createListing(req, res, next) {
     try {
-        const data = {
-            name: "Fahari Garden",
-            location : {
-                mainLocation: "Donholm",
-                subLocation: "QuickMart",
-                locationIdentifiers: ["next to quick mart"]
-            },
-            geoLocation: {
-                latitude: -1.1845921992802158,
-                longitude: 36.917097010566806
-            },
-            details: {
-                bedrooms: 3,
-                buildingType: "Apartment",
-                masterEnsuite: true,
-                bathrooms: 1
-            },
-            onMarket: true,
-            rentPrice: 45000,
-            tags: ["clean", "furnished","spaciuos", "master ensuite", "elevator"]
+        // const data = {
+        //     name: "The Getaway",
+        //     location : {
+        //         mainLocation: "UpperHill",
+        //         subLocation: "Ngong Rd",
+        //         locationIdentifiers: ["Nairobi Sports "]
+        //     },
+             
+        //     geoLocation: {
+        //         latitude: -1.2992660156231075,
+        //         longitude: 36.81009739624257
+        //     },
+        //     details: {
+        //         bedrooms: 2,
+        //         buildingType: "Apartment",
+        //         masterEnsuite: true,
+        //         bathrooms: 2
+        //     },
+        //     onMarket: true,
+        //     rentPrice: 75000,
+        //     tags: ["clean",,"spa", 'well-lit', 'gym', 'swimming pool']
 
-        }
+        // }
         // const errors = await validateListingData(req)
         // if (!errors.isEmpty()){
         //     res.status(422).json({error: errors.array()})
