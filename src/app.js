@@ -13,6 +13,7 @@ const { listingApi } = require("./components/listings")
 const { planApi } = require("./components/plans")
 const { authApi } = require("./components/auth")
 const { mpesaApi } = require("./components/paymentGateways/mpesa")
+const { imageApi } = require("./components/images")
 const { initpassportLocalCustomer } = require("./libraries")
 const errorHandler = require('./middleware/errorHandler')
 
@@ -58,6 +59,7 @@ app.use('/api/v1/customers', customerApi)
 app.use('/api/v1/listings', listingApi)
 app.use('/api/v1/plans', planApi)
 app.use('/api/v1/payments', mpesaApi)
+app.use('/api/v1/images', imageApi)
 
 app.use(errorHandler)
 

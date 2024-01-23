@@ -10,6 +10,17 @@ async function createImage(imageData) {
     }
 }
 
+async function image(imageId) {
+    try {
+        const image = await Image.findById(imageId);
+        if (!image) throw new ImageError('NotFound', 404);
+        return image
+    } catch (err) {
+        throw new ImageError(err.message, 404);
+    }
+}
+
 module.exports = {
-    createImage
+    createImage,
+    image
 }

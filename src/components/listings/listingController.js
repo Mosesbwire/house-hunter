@@ -6,9 +6,9 @@ const { validateListingData } = require("./validation")
 async function createListing(req, res, next) {
     try {
         const data = {
-            name: "Casa Villa",
+            name: "Fahari Garden",
             location : {
-                mainLocation: "Kahawa West",
+                mainLocation: "Donholm",
                 subLocation: "QuickMart",
                 locationIdentifiers: ["next to quick mart"]
             },

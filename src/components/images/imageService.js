@@ -1,4 +1,7 @@
+const fs = require('node:fs')
+const ImageError = require('./imageError');
 const ImageDAL = require('./imagesDAL');
+const ListingError = require('../listings/listingError');
 
 async function createImage(images, listingId, img=null) {
     if (img) {
@@ -15,7 +18,7 @@ async function createImage(images, listingId, img=null) {
     })
     
     const data = await Promise.allSettled(imagePromises);
-    console.log(data)
+    
     const urls = data.map(dt => {
         if (dt.status === 'fulfilled') {
             return imageUrl(dt.value.id)
@@ -29,13 +32,40 @@ function imageBuffer(image) {
     return {imageBuffer: baseString, mimeType: image.mimetype}
 }
 
+function bufferImage(image) {
+    try {
+        const path = `${__dirname}/tmp`
+        const mimetype = image.mimeType.split('/')[1]
+        const fullPath = `${path}/${image.id}.${mimetype}`
+        fs.writeFileSync(fullPath, Buffer.from(image.imageBuffer, 'base64'));
+        return fullPath
+    } catch (err) {
+        
+        return new ListingError('Failed to write image', 500);
+    }
+}
+
 function imageUrl(imageId) {
     const uri = process.env.BASE_URL
-    const url = `${uri}/api/v1/${imageId}`
+    const url = `${uri}/api/v1/images/${imageId}`
     return url
 }
 
+async function getImage(imageId) {
+    try {
+        const image = await ImageDAL.image(imageId);
+
+        return bufferImage(image);
+
+    } catch (err) {
+        if(err instanceof ImageError){
+            throw err
+        }
+    }
+}
+
 module.exports = {
-    createImage
+    createImage,
+    getImage
 }
 
