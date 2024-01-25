@@ -1,4 +1,5 @@
 const fs = require('node:fs')
+const { readFile } = require('node:fs/promises')
 const ImageError = require('./imageError');
 const ImageDAL = require('./imagesDAL');
 const ListingError = require('../listings/listingError');
@@ -43,15 +44,32 @@ function createImageTmpDir() {
     }
 }
 
+async function fileExists(file){
+    const mimeTypes = ['jpeg', 'jpg', 'webp', 'png']
+    const path = `${__dirname}/tmp`
+    for (let i = 0; i < mimeTypes.length; i++){
+        const fullPath = `${path}/${file}.${mimeTypes[i]}`   
+        try {
+           await readFile(fullPath)
+           return {status: true, path: fullPath}
+        } catch (err) {
+            
+        }   
+    }
+    return {status: false, path: ''}
+}
+
 function bufferImage(image) {
     try {
+        
         const path = `${__dirname}/tmp`
         const mimetype = image.mimeType.split('/')[1]
         const fullPath = `${path}/${image.id}.${mimetype}`
+        
         fs.writeFileSync(fullPath, Buffer.from(image.imageBuffer, 'base64'));
         return fullPath
     } catch (err) {
-        console.log(err)
+        
         return new ListingError('Failed to write image', 500);
     }
 }
@@ -63,9 +81,13 @@ function imageUrl(imageId) {
 }
 
 async function getImage(imageId) {
+    
     try {
+        const fileStatus = await fileExists(imageId)
+        if (fileStatus.status) {
+            return fileStatus.path
+        }
         const image = await ImageDAL.image(imageId);
-
         return bufferImage(image);
 
     } catch (err) {
